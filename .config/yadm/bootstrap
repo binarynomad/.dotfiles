@@ -1,5 +1,4 @@
 #!/bin/sh
-
 # ---------------------------------------------
 # Bootstrap file to initialize a new environment
 # ---------------------------------------------
@@ -14,14 +13,29 @@ echo "I found I'm running on: ${OS_TYPE}"
 
 # Check what type of machine this will be (lite or full)
 # TODO: setup a prompt for input from the user (with a default setting to lite)
+# 
 
 # ---------------------------------------------
-# Installing the core applications
+# Installing Core Applications
 # ---------------------------------------------
 
 # TODO: Build some Brewbundle files for mac
 #
-#
+
+
 # TODO: build a apt file for (debian/ubuntu)
+# 
 
 
+# ---------------------------------------------
+# Configure Applications
+# ---------------------------------------------
+
+
+# iTerm2 - Setup Preferences, Colors, and Fonts
+# TODO: setup the config for iTerm2, inclued the colorscheme and font needed
+
+## Specify the preferences directory
+#defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/dotfiles/iterm2"
+# Tell iTerm2 to use the custom preferences in the directory
+#defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
