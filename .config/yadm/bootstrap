@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# ---------------------------------------------
+# Bootstrap file to initialize a new environment
+# ---------------------------------------------
+# I plan to have (3) core environments:
+# - Mac (full): This is a full setup of my primary machine env, with all applications (gui and tui)
+# - Mac (lite): This is a subset of core apps for any machine I want to work on
+# - Linux (lite): This is a subset of primary utils I want to have in my cli
+
+# Check the current OS
+export OS_TYPE="$(uname -s)"
+echo "I found I'm running on: ${OS_TYPE}"
+
+# Check what type of machine this will be (lite or full)
+# TODO: setup a prompt for input from the user (with a default setting to lite)
+
+# ---------------------------------------------
+# Installing the core applications
+# ---------------------------------------------
+
+# TODO: Build some Brewbundle files for mac
+#
+#
+# TODO: build a apt file for (debian/ubuntu)
+
+
