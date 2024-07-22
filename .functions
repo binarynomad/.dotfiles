@@ -1,0 +1,97 @@
+# FUNCTIONS for the shell
+# Note: Add local specific entries in the (~/.xxx-local) file (see bottom)
+
+# FILE: Encode a file into a dataurl
+# -------------------------------------
+
+function encodefile() {
+    local mimeType=$(file -b --mime-type "$1");
+    if [[ $mimeType == text/* ]]; then
+        mimeType="${mimeType};charset=utf-8";
+    fi
+    echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
+}
+
+# SSL: Show all the names (CNs and SANs) for a given domain
+# -------------------------------------
+
+function getcertnames() {
+    if [ -z "${1}" ]; then
+        echo "ERROR: No domain specified.";
+        return 1;
+    fi;
+
+    local domain="${1}";
+    echo "Testing ${domain}…";
+    echo ""; # newline
+
+    local tmp=$(echo -e "GET / HTTP/1.0\nEOT" \
+        | openssl s_client -connect "${domain}:443" -servername "${domain}" 2>&1);
+
+    if [[ "${tmp}" = *"-----BEGIN CERTIFICATE-----"* ]]; then
+        local certText=$(echo "${tmp}" \
+            | openssl x509 -text -certopt "no_aux, no_header, no_issuer, no_pubkey, \
+            no_serial, no_sigdump, no_signame, no_validity, no_version");
+        echo "Common Name:";
+        echo ""; # newline
+        echo "${certText}" | grep "Subject:" | sed -e "s/^.*CN=//" | sed -e "s/\/emailAddress=.*//";
+        echo ""; # newline
+        echo "Subject Alternative Name(s):";
+        echo ""; # newline
+        echo "${certText}" | grep -A 1 "Subject Alternative Name:" \
+            | sed -e "2s/DNS://g" -e "s/ //g" | tr "," "\n" | tail -n +2;
+        return 0;
+    else
+        echo "ERROR: Certificate not found.";
+        return 1;
+    fi;
+}
+
+# TREE: Alternative to tree that shows hidden/dir and puts in less
+# -------------------------------------
+
+function tre() {
+    tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
+}
+
+# FZF: A better internal sub-search using 'fd' instead of 'find'D
+# -------------------------------------
+
+_fzf_compgen_dir() {
+  command fd --type d --hidden --follow --exclude .git --exclude /Library --exclude node_modules . "$1"
+}
+_fzf_compgen_path() {
+  command fd --hidden --follow --exclude .git --exclude /Library --exclude node_modules . "$1"
+}
+
+# FZF: create "cdf" command to cd into any directory from HOME
+# -------------------------------------
+function cdf() {
+  # uses fd + fzf to search from $HOME for directories
+  cd "$(fd --print0 --hidden --ignore-case --absolute-path --follow --type d \
+  --exclude /Library $1 $HOME \
+  | fzf --read0 --no-multi --exit-0 --select-1)"
+}
+
+# FZF: search and edit file from current location
+# -------------------------------------
+function fe() {
+  local files
+  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
+
+# FZF: search and edit file from HOME
+# -------------------------------------
+function feh() {
+  local files
+  if [ -z "$1" ] ; then echo "no search given" ; return 1 ; fi
+  IFS=$'\n' files=($(mdfind -onlyin $HOME $@ | zgrep  -avE '~$' | fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
+
+# ============================
+# !! KEEP TIHS AT THE BOTTMOM OF THE FILE.
+# ============================
+# If there are LOCAL functions, source them to override the global ones.
+[ -f ~/.functions-local ] && source ~/.functions-local

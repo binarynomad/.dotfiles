@@ -1,0 +1,120 @@
+# ALIASES for the shell
+# Note: Add local specific entries in the (~/.xxx-local) file (see bottom)
+
+# Quick edit of my env files
+alias exports='vim ~/.exports*'
+alias aliases='vim ~/.aliases*'
+alias functions='vim ~/.functions*'
+alias zshrc='vim ~/.zshrc'
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
+
+# Easier navigation: .., ..., ...., ....., ~ and -
+alias ..="cd .."
+alias ...="cd ../.."
+alias -- -="cd -"
+
+# Directory Shortcuts
+alias dl="cd ~/Downloads"
+alias de="cd ~/Desktop"
+alias dev="cd ~/dev"
+
+# Application Shortcuts
+alias ap="ansible-playbook"
+alias o='open'
+alias sl='subl'
+
+# Dropbox Shortcuts
+alias db="cd ~/Dropbox"
+alias p="cd ~/Dropbox/Projects"
+alias clients='cd ~/Dropbox/Clients'
+alias oitd='cd ~/Dropbox/Business/Open-IT-Design'
+
+# AI Ollama Specific Aliases
+alias ai='ollama run mistral'
+alias aic='ollama run codellama'
+alias aicc='ollama run neonshark/mamba-gpt-7b-v2-mistral'
+alias aio='ollama run llama3'
+
+# ============================
+# Env Tool Specific Aliases
+# ============================
+
+# FZF: fzf fuzzy search with preview
+alias fp="fzf --height 40% --layout reverse --info inline --border \
+    --preview 'file {}' --preview-window down:1:noborder \
+    --color 'fg:#bbccdd,fg+:#ddeeff,bg:#334455,preview-bg:#223344,border:#778899'"
+
+# Search for what files changed in a system as of x days ago
+alias whatchanged='find ./ -type f -mtime'
+
+# Filter out all comments from a file to see active code
+alias filtercomments='grep -v -e "^$" -e"^ *#"'
+
+# ENV: Edit the hosts file and reset the dns cache
+alias edithosts='sudo vi /etc/hosts ; flushdns'
+
+# ENV: Show your path in a list format
+alias mypath='tr ":" "\n" <<< $PATH'
+
+
+# ============================
+# Network Specific Aliases
+# ============================
+
+if [[ "$OS_TYPE" == "Darwin" ]]; then
+  alias shownet='ifconfig | grep inet | sort ; echo "External: $(curl -s ifconfig.me/ip)"'
+  alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }' | sort"
+else
+  alias shownet='ip addr | grep inet | sort ; echo "External: $(curl -s ifconfig.me/ip)"'
+fi
+
+# NET: Tools aliased with sudo
+alias mtr='sudo mtr'
+alias nodes='sudo ~/bin/nodes.py'
+alias getnodes='nodes -t 172.22.100.0/24'
+alias scan='sudo nmap -sS -O'
+
+# NET: Speedtesting
+alias iperft='iperf -c iperf.he.net'
+alias iperfu='iperf -c iperf.he.net -u'
+
+# NET: Notify Pushover 
+alias notify='curl -SsL http://oitd.link/notify'
+
+# WEB: URL-encode strings
+alias encodeurl='python -c "import sys, urllib.parse ; print(urllib.parse.quote(sys.argv[1]));"'
+
+# ============================
+# MacOS Specific Aliases
+# ============================
+
+if [[ "$OS_TYPE" == "Darwin" ]]; then
+
+# OSX: Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup'
+
+# OSX: Flush Directory Service cache
+alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
+
+# OSX: Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# OSX: Show/hide hidden files in Finder
+alias showfiles="defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder"
+alias hidefiles="defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder"
+
+# OSX: PlistBuddy alias, because sometimes `defaults` just doesn’t cut it
+alias plistbuddy="/usr/libexec/PlistBuddy"
+
+# OSX: Flush the DNS cache on a Mac
+alias flushdns='sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say cache flushed'
+
+fi
+
+# ============================
+# !! KEEP TIHS AT THE BOTTMOM OF THE FILE.
+# ============================
+# If there are LOCAL aliases, source them to override the global ones.
+[ -f ~/.aliases-local ] && source ~/.aliases-local

@@ -1,0 +1,51 @@
+# EXPORTS for the shell
+# Note: Add local specific entries in the (~/.xxx-local) file (see bottom)
+
+# Set the OS type for OS X (Darwin) or Linux (Linux).
+export OS_TYPE="$(uname -s)"
+
+# Add my BIN to the path
+path=("$HOME/bin" $path)
+export PATH
+
+# VIM: Make vim the default editor.
+export EDITOR='vim';
+
+# MAN: Highlight section titles in manual pages.
+export LESS_TERMCAP_md="${yellow}";
+
+# MAN: Don’t clear the screen after quitting a manual page.
+export MANPAGER='less -X';
+
+# MAN: Set the man pages width
+export MANWIDTH='80';
+
+# GREP: Always enable colored `grep` output.
+export GREP_OPTIONS='--color=auto';
+
+# HISTORY: Omit duplicates and commands that begin with a space
+export HISTCONTROL='ignoreboth';
+
+# LOCALIZATION: Prefer US English and use UTF-8.
+export LANG='en_US.UTF-8';
+export LC_ALL='en_US.UTF-8';
+
+# ANSIBLE + OTHERS
+# Multiprocessing causes Python to crash [..] when fork() was called
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+# FZF: Setting fd as the default source for fzf (MUST INSTALL FD FIRST)
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude /Library'
+
+# FZF: To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# FZF: Setup defaut display options and keybindings
+export FZF_DEFAULT_OPTS="--no-mouse --height 80% -1 --reverse --multi --inline-info --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -300' --preview-window='right:hidden' --bind='f3:execute(bat --style=numbers {} || less -f {}),f2:toggle-preview,ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy),ctrl-x:execute(rm -i {+})+abort,ctrl-s:jump,ctrl-space:toggle'"
+
+
+# ============================
+# !! KEEP TIHS AT THE BOTTMOM OF THE FILE.
+# ============================
+# If there are LOCAL exports, source them to override the global ones.
+[ -f ~/.exports-local ] && source ~/.exports-local
