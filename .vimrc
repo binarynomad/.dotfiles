@@ -89,6 +89,13 @@ noremap <leader>W :w !sudo tee % > /dev/null<CR>
 " Allow searching of a visual selection (//)
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
+" vim-powered terminal in split window
+map <Leader>t :term ++close<cr>
+tmap <Leader>t <c-w>:term ++close<cr>
+" vim-powered terminal in new tab
+map <Leader>T :tab term ++close<cr>
+tmap <Leader>T <c-w>:tab term ++close<cr>
+
 " ---File Directory Setup--- {{{2
 
 " Identify where the configs & plugins will go
