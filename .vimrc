@@ -171,18 +171,6 @@ autocmd! User GoyoEnter Limelight
 autocmd! User GoyoLeave Limelight!
 nnoremap <Leader>gy :Goyo<CR>
 
-" TODO: DELETE ME AFTER 2021-08-30 if I don't notice
-" " MULTIPLE SELECT : Like Sublime, Multi Cursor (C-n)
-" let g:multi_cursor_use_default_mapping=0
-" let g:multi_cursor_start_word_key      = '<C-n>'
-" let g:multi_cursor_select_all_word_key = '<A-n>'
-" let g:multi_cursor_start_key           = 'g<C-n>'
-" let g:multi_cursor_select_all_key      = 'g<A-n>'
-" let g:multi_cursor_next_key            = '<C-n>'
-" let g:multi_cursor_prev_key            = '<C-p>'
-" let g:multi_cursor_skip_key            = '<C-x>'
-" let g:multi_cursor_quit_key            = '<Esc>'
-
 " SEARCHTASKS : Search files for tags like TODO (L-st)
 " note: use the function ClearQuickfillList (L-cc) to free up
 let g:searchtasks_list=["TODO", "FIXME"]
@@ -192,7 +180,6 @@ nnoremap <Leader>st :SearchTasks %<CR>
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-
 if has('macunix')  " use powerline fonts if launched from iTerm
   let g:airline_powerline_fonts = 1
 endif
@@ -205,20 +192,6 @@ let g:indent_guides_start_level = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 1
 
-" KITE : Python AutoCompletion
-" TODO: add code to only run this if Kite is installed
-"let g:kite_tab_complete=1
-
-" JEDI : Python code assistant
-" (C-space) Code Completion
-" (L-g) Goto assignment
-" (L-d) Goto definition follow identifier as far as possible (imports & statements)
-" (L-s) Goto (typing) stub
-" (K) Show Documentation/Pydoc
-" (L-r) Renaming Function, Class, in project
-" (L-n) Usages shows all the usages of a name)
-" :Pyimport <module>: Open module e.g.  (:Pyimport os)
-
 " VIM MARKDOWN FOLDING : Markdown folding styles
 let g:vim_markdown_folding_style_pythonic = 1
 
@@ -226,7 +199,8 @@ let g:vim_markdown_folding_style_pythonic = 1
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 
 " UNDOTREE : program to visualize/switch unto changes (F5)
-nnoremap <F5> :UndotreeToggle<cr>
+" nnoremap <F5> :UndotreeToggle<cr>
+nnoremap <Leader>uu :UndotreeToggle<cr>
 
 " SNIPMATE : Plugin that allows for smart/responsive text snippets
 let g:snipMate = { 'snippet_version' : 1 }
@@ -370,8 +344,6 @@ call plug#begin('~/.vim/plugged')
 "---TESTING Plugins---
 
 Plug 'chrisbra/csv.vim'                 " plugin to edit CSV files (2021-07-29)
-Plug 'dbeniamine/cheat.sh-vim'          " plugin to call cheatsheets from cht.sh
-
 
 "---General Env Plugins---
 Plug 'cohama/lexima.vim'                " add closing pairs to (,{.[.<,\"
@@ -385,23 +357,23 @@ Plug 'junegunn/fzf.vim'                 " fuzzy searching of vim (commands, buff
 Plug 'junegunn/goyo.vim'                " distraction_free
 Plug 'junegunn/limelight.vim'           " dulls colors of paragraphs surrounding foused text
 Plug 'junegunn/vim-easy-align'          " align text in columns on markers
-Plug 'lingceng/z.vim'                   " dir_jump: uses Z for your most used dirs
+Plug 'lingceng/z.vim'                   " dir_jump: uses Z for your most used dirs (:Z dir)
 Plug 'liuchengxu/vim-which-key'         " show some of your mappings live
 Plug 'mbbill/undotree'                  " full undo tracking and diffs
 Plug 'mhinz/vim-startify'               " vim startup splashscreen
 Plug 'scrooloose/nerdtree'              " file_tree: remap <Leader>f<CR>
 
 "---TextObj Plugins---
+Plug 'kana/vim-textobj-user'            " used by the other object plugins
 Plug 'glts/vim-textobj-comment'         " vic: select all in commented block
 Plug 'kana/vim-textobj-line'            " vil: select all in line
-Plug 'kana/vim-textobj-user'            " used by other object plugins
 Plug 'michaeljsmith/vim-indent-object'  " text object, based on indentation levels ai,ii,aI,iI
 Plug 'wellle/targets.vim'               " smart selection between ([{<\"''\"}])
 
 "---Markdown Plugins---
-Plug 'itspriddle/vim-marked'            " launch MacOS Marked2.app
-Plug 'masukomi/vim-markdown-folding'    " markdown_header_folding
 Plug 'tpope/vim-markdown'               " markdown syntax and list management
+Plug 'masukomi/vim-markdown-folding'    " markdown_header_folding
+Plug 'itspriddle/vim-marked'            " launch MacOS Marked2.app
 
 "---Coding Plugins---
 Plug 'FooSoft/vim-argwrap'              " spread_condense_arrays <L>1
@@ -418,9 +390,8 @@ Plug 'vim-airline/vim-airline-themes'   " status_line_themes
 
 "---Python Plugins---
 Plug 'bitc/vim-bad-whitespace'          " highlight_spaces
-"Plug 'davidhalter/jedi-vim'             " python_autocomplete; CONFLICT W/ PYTHON-MODE
 Plug 'nvie/vim-flake8'                  " python_pep8: F7; Needs brew install flake8
-Plug 'vim-python/python-syntax'         " python_syntax: TODO:kill?
+Plug 'vim-python/python-syntax'         " python_syntax 
 Plug 'vim-scripts/indentpython.vim'     " indentation: using PEP8
 
 "---Snippit Engine Plugins---
@@ -485,8 +456,8 @@ colorscheme dracula
 
 " ---- ABBREVIATIONS: Mini-Snippets ---- {{{1
 
-iab abpysetup #!/usr/bin/env python3
-iab abshsetup #!/usr/bin/env bash
+iab absetuppy #!/usr/bin/env python3
+iab absetupbash #!/usr/bin/env bash
 iab ablline # ----------------------------------------------------------------------------
 iab abline # -------------------------------------
 
@@ -558,10 +529,10 @@ command -range=% -bar GetMAC :<line1>,<line2>!grep -aEio '(([0-9A-Fa-f]{2}[-:]){
 command -range=% -bar Filename :<line1>,<line2>!tr 'A-Z' 'a-z' | tr '_,;: ' '-' | sed -E 's/-+/-/g'
 
 " URL Encode: Convert string to URL safe chars
-command -range=% -bar URLEncode :<line1>,<line2>!python3 -c 'import sys; from urllib import parse; print(parse.quote_plus(sys.stdin.read().strip()))'
+command -range=% -bar URLEncode :<line1>,<line2>!python3 -c 'import sys; from urllib import parse; print(parse.quote(sys.stdin.read().strip()))'
 "
 " URL Decode: Convert URL to string
-command -range=% -bar URLDecode :<line1>,<line2>!python3 -c 'import sys; from urllib import parse; print(parse.unquote_plus(sys.stdin.read().strip()))'
+command -range=% -bar URLDecode :<line1>,<line2>!python3 -c 'import sys; from urllib import parse; print(parse.unquote(sys.stdin.read().strip()))'
 "
 " ---- AUTOCMD: Final Commands ---- {{{1
 " note: these could move up to the Settings: FileType Editor area
@@ -582,18 +553,26 @@ endif
 
 "---- TESTING AREA: Trying out new options/functions ---- {{{1
 
-" NETRW : Test out the built-in file explorere in stead of NERDTree
-" https://blog.stevenocchipinti.com/2016/12/28/using-netrw-instead-of-nerdtree-for-vim/
+" "NETRW : Test out the built-in file explorer in stead of NERDTree
+" "https://blog.stevenocchipinti.com/2016/12/28/using-netrw-instead-of-nerdtree-for-vim/
+" " Disable banner
 " let g:netrw_banner = 0
+" " Set list style to tree view
 " let g:netrw_liststyle = 3
+" " Open files in previous window
 " let g:netrw_browse_split = 4
+" " Open splits to the right
 " let g:netrw_altv = 1
+" " Set window size
 " let g:netrw_winsize = 25
+" " Auto open netrw on VimEnter
 " augroup ProjectDrawer
 "   autocmd!
-"   autocmd VimEnter * :Vexplore
+"   autocmd VimEnter * :Lex
 " augroup END
-"
+" " Map <Leader>nt to open netrw and resize the window
+" inoremap <Leader>nt <ESC>:Lex<CR>:vertical resize 30<CR>
+" nnoremap <Leader>nt :Lex<CR>:vertical resize 30<CR>
 
 "---- TESTING FZF: normally I use via plugin, but this was in the brew update
 set rtp+=/opt/homebrew/opt/fzf

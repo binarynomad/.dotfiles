@@ -13,7 +13,7 @@ echo "I found I'm running on: ${OS_TYPE}"
 
 # Check what type of machine this will be (lite or full)
 # TODO: setup a prompt for input from the user (with a default setting to lite)
-# 
+#
 
 # ---------------------------------------------
 # Installing Core Applications
@@ -24,18 +24,30 @@ echo "I found I'm running on: ${OS_TYPE}"
 
 
 # TODO: build a apt file for (debian/ubuntu)
-# 
+#
 
 
 # ---------------------------------------------
 # Configure Applications
 # ---------------------------------------------
 
+if [[ "$OS_TYPE" == "Darwin" ]]; then
 
 # iTerm2 - Setup Preferences, Colors, and Fonts
-# TODO: setup the config for iTerm2, inclued the colorscheme and font needed
+# TODO: inclued the colorscheme and font needed
+# Specify the preferences directory & use the custom preferences in the directory
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.config/iterm2-cfg"
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
-## Specify the preferences directory
-#defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/dotfiles/iterm2"
-# Tell iTerm2 to use the custom preferences in the directory
-#defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+# Homebrew - install homebrew if it's missing
+if ! command -v brew >/dev/null 2>&1; then
+echo "Installing homebrew"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
+
+if [ -f "$HOME/.Brewfile" ]; then
+echo "Updating homebrew bundle"
+brew bundle --global
+fi
+
+fi
