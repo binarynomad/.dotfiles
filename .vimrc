@@ -404,13 +404,13 @@ else
 endif
 
 "---ColorSchemes---
-Plug 'altercation/vim-colors-solarized' " color_scheme
-Plug 'ayu-theme/ayu-vim'                " color_scheme
-Plug 'dracula/vim', { 'as': 'dracula' } " color_scheme
-Plug 'jnurmine/Zenburn'                 " color_scheme
-Plug 'rakr/vim-one'                     " color_scheme: based off Atom
-Plug 'sonph/onehalf', {'rtp': 'vim/'}   " color_scheme
+Plug 'dracula/vim', { 'as': 'dracula' } " color_scheme 
+Plug 'nanotech/jellybeans.vim'          " color_scheme
 Plug 'tomasr/molokai'                   " color_scheme
+Plug 'sonph/onehalf', {'rtp': 'vim/'}   " color_scheme
+" TESTING
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+
 
 call plug#end()
 
@@ -422,10 +422,9 @@ call plug#end()
 
 " Setup TRUECOLORS for full color range
 " warning: this can cause visual issues in terms not supporting true-colors
-if (has("termguicolors"))
-  if (exists("$COLORTERM"))
+" Linux has termguicolors but it ruins the colors...
+if has('termguicolors') && (has('mac') || has('win32'))
     set termguicolors
-  endif
 endif
 
 " Setup italic text so it doesn't have a colored background
@@ -435,19 +434,10 @@ set t_ZR="\e[[23m"
 "---Dracula---
 colorscheme dracula
 
-"---ONE---
-"colorscheme one
-"set background=dark  "called after colorscheme
-"let g:airline_theme='one'
-
 "---Molokai---
 "colorscheme molokai
 "let g:molokai_original = 1
 "let g:rehash256 = 1  " bring the 256 color version as close as possible
-
-"---Ayu---
-"colorscheme ayu
-"let ayucolor='mirage'  " for mirage version of them
 
 "---OneHalfDark---
 "colorscheme onehalfdark
