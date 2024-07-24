@@ -81,16 +81,14 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #
-# 2023-09-13: Removed GIT for now
+# Leaving out (git gh fzf) -- BH
 plugins=(
   colored-man-pages
   copypath
-  fzf
-  jsontools
-  nmap
-  sudo
+  dotenv
+  rsync
   vi-mode
-  web-search
+  z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -103,11 +101,11 @@ source $ZSH/oh-my-zsh.sh
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-   export EDITOR='mvim'
-fi
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -125,12 +123,12 @@ fi
 # BH: Personal Settings
 ###########################################################
 
-# BRIAN: Personal settings, aliases, functions, etc.
+# BH: Personal settings, aliases, functions, etc.
 [ -f ~/.exports ] && source ~/.exports
 [ -f ~/.functions ] && source ~/.functions
 [ -f ~/.aliases ] && source ~/.aliases
 
-# BRIAN: ZSH Prompt on NewLine
+# BH: ZSH Prompt on NewLine
 precmd() { print "" }
 prompt_end() {
   if [[ -n $CURRENT_BG ]]; then
@@ -145,38 +143,38 @@ prompt_end() {
   printf "\n$";
 }
 
-# BRIAN: TheFuck
+# BH: TheFuck
 eval $(thefuck --alias doh)
 
-# BRIAN: Z Directory Jumping
+# BH: Z Directory Jumping
 . /opt/homebrew/etc/profile.d/z.sh
 
-# BRIAN: ZSH Syntax
+# BH: ZSH Syntax
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# BRIAN: ZSH Autocompletion
+# BH: ZSH Autocompletion
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# BRIAN: BREW ZSH Autocompletions
+# BH: BREW ZSH Autocompletions
 fpath+=/opt/homebrew/share/zsh/site-functions
 
-# BRIAN: FZF source commands
+# BH: FZF source commands
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# BRIAN: 1PASSWORD CLI Autocompletion
+# BH: 1PASSWORD CLI Autocompletion
 eval "$(op completion zsh)"; compdef _op op
 
-# BRIAN: 1PASSWORD CLI Plugins
+# BH: 1PASSWORD CLI Plugins
 source /Users/brian/.config/op/plugins.sh
 
-# BRIAN: ZSH Completions
+# BH: ZSH Completions
 # The following lines were added by compinstall
 zstyle :compinstall filename '/Users/brian/.zshrc'
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-# BRIAN: PYENV Enviroment Setup
+# BH: PYENV Enviroment Setup
 if command -v pyenv 1>/dev/null 2>&1; then
  eval "$(pyenv init -)"
 fi

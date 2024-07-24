@@ -15,6 +15,7 @@ echo "I found I'm running on: ${OS_TYPE}"
 # TODO: setup a prompt for input from the user (with a default setting to lite)
 #
 
+# TODO: consider breaking out os installs into their own scripts
 # ---------------------------------------------
 # Installing Core Applications
 # ---------------------------------------------

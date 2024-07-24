@@ -406,11 +406,9 @@ endif
 "---ColorSchemes---
 Plug 'dracula/vim', { 'as': 'dracula' } " color_scheme 
 Plug 'nanotech/jellybeans.vim'          " color_scheme
+Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'tomasr/molokai'                   " color_scheme
 Plug 'sonph/onehalf', {'rtp': 'vim/'}   " color_scheme
-" TESTING
-Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-
 
 call plug#end()
 
