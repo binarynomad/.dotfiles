@@ -2,53 +2,36 @@
 # ---------------------------------------------
 # Bootstrap file to initialize a new environment
 # ---------------------------------------------
-# I plan to have (3) core environments:
-# - Mac (full): This is a full setup of my primary machine env, with all applications (gui and tui)
-# - Mac (lite): This is a subset of core apps for any machine I want to work on
-# - Linux (lite): This is a subset of primary utils I want to have in my cli
 
-# Check the current OS
+# I have (3) primary environments:
+# - Mac (default): standard set of both cli and gui tools installed
+# - Mac (full): complete install of my working environment
+# - Linux (default): standard set of cli tools
+
+# Get the current OS (expecting "Darwin" or "Linux")
 export OS_TYPE="$(uname -s)"
 echo "I found I'm running on: ${OS_TYPE}"
 
-# Check what type of machine this will be (lite or full)
+# Check what type of machine this will be (DEFAULT or FULL)
 # TODO: setup a prompt for input from the user (with a default setting to lite)
-#
 
-# TODO: consider breaking out os installs into their own scripts
-# ---------------------------------------------
-# Installing Core Applications
-# ---------------------------------------------
+while true; do
+    echo "Will this be a default install or a full install? (default/full)"
+    read -r INSTALL_TYPE
 
-# TODO: Build some Brewbundle files for mac
-#
+    case "$INSTALL_TYPE" in
+        default)
+            BOOTSTRAP_MODE="default"
+            break
+            ;;
+        full)
+            BOOTSTRAP_MODE="full"
+            break
+            ;;
+        *)
+            echo "Invalid input. Please type 'default' or 'full'."
+            ;;
+    esac
+done
 
-
-# TODO: build a apt file for (debian/ubuntu)
-#
-
-
-# ---------------------------------------------
-# Configure Applications
-# ---------------------------------------------
-
-if [[ "$OS_TYPE" == "Darwin" ]]; then
-
-# iTerm2 - Setup Preferences, Colors, and Fonts
-# TODO: inclued the colorscheme and font needed
-# Specify the preferences directory & use the custom preferences in the directory
-defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.config/iterm2-cfg"
-defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
-
-# Homebrew - install homebrew if it's missing
-if ! command -v brew >/dev/null 2>&1; then
-echo "Installing homebrew"
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-fi
-
-if [ -f "$HOME/.Brewfile" ]; then
-echo "Updating homebrew bundle"
-brew bundle --global
-fi
-
-fi
+echo "BOOTSTRAP_MODE is set to $BOOTSTRAP_MODE"
