@@ -45,7 +45,7 @@ export FZF_DEFAULT_OPTS="--no-mouse --height 80% -1 --reverse --multi --inline-i
 
 
 # ============================
-# !! KEEP TIHS AT THE BOTTMOM OF THE FILE.
+# !! KEEP TIHS AT THE BOTTOM OF THE FILE.
 # ============================
 # If there are LOCAL exports, source them to override the global ones.
 [ -f ~/.exports-local ] && source ~/.exports-local

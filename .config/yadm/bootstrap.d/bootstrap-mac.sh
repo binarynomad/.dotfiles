@@ -27,6 +27,7 @@ echo "-------------------------------------------------------"
 # CLI APPS: Default Install
 # ---------------------------------------------
 # vim, tldr, 1pw-cli, vd, bat
+# fd, fzf, ripgrep
 
 # if [ -f "$HOME/.Brewfile" ]; then
 # echo "Updating homebrew bundle"

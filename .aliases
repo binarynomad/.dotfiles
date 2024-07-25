@@ -6,6 +6,7 @@ alias exports='vim ~/.exports*'
 alias aliases='vim ~/.aliases*'
 alias functions='vim ~/.functions*'
 alias zshrc='vim ~/.zshrc'
+alias zprofile='vim ~/.zprofile'
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
@@ -115,7 +116,7 @@ alias flushdns='sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say
 fi
 
 # ============================
-# !! KEEP TIHS AT THE BOTTMOM OF THE FILE.
+# !! KEEP TIHS AT THE BOTTOM OF THE FILE.
 # ============================
 # If there are LOCAL aliases, source them to override the global ones.
 [ -f ~/.aliases-local ] && source ~/.aliases-local

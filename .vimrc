@@ -198,8 +198,7 @@ let g:vim_markdown_folding_style_pythonic = 1
 " VIM MARKDOWN : Markdown Syntax, automation
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 
-" UNDOTREE : program to visualize/switch unto changes (F5)
-" nnoremap <F5> :UndotreeToggle<cr>
+" UNDOTREE : program to visualize/switch unto changes (L-uu)
 nnoremap <Leader>uu :UndotreeToggle<cr>
 
 " SNIPMATE : Plugin that allows for smart/responsive text snippets

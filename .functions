@@ -54,7 +54,7 @@ function tre() {
     tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
-# FZF: A better internal sub-search using 'fd' instead of 'find'D
+# FZF: A better internal sub-search using 'fd' instead of 'find'
 # -------------------------------------
 
 _fzf_compgen_dir() {
@@ -91,7 +91,7 @@ function feh() {
 }
 
 # ============================
-# !! KEEP TIHS AT THE BOTTMOM OF THE FILE.
+# !! KEEP TIHS AT THE BOTTOM OF THE FILE.
 # ============================
 # If there are LOCAL functions, source them to override the global ones.
 [ -f ~/.functions-local ] && source ~/.functions-local
