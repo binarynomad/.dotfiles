@@ -1,37 +1,24 @@
-#!/bin/sh
-# ---------------------------------------------
-# Bootstrap file to initialize a new environment
-# ---------------------------------------------
+#!/bin/bash
 
-# I have (3) primary environments:
-# - Mac (default): standard set of both cli and gui tools installed
-# - Mac (full): complete install of my working environment
-# - Linux (default): standard set of cli tools
+# Save this file as ~/.config/yadm/bootstrap and make it executable. It will
+# execute all executable files (excluding templates and editor backups) in the
+# ~/.config/yadm/bootstrap.d directory when run.
 
-# Get the current OS (expecting "Darwin" or "Linux")
-export OS_TYPE="$(uname -s)"
-echo "I found I'm running on: ${OS_TYPE}"
+set -eu
 
-# Check what type of machine this will be (DEFAULT or FULL)
-# TODO: setup a prompt for input from the user (with a default setting to lite)
+# Directory to look for bootstrap executables in
+BOOTSTRAP_D="${BASH_SOURCE[0]}.d"
 
-while true; do
-    echo "Will this be a default install or a full install? (default/full)"
-    read -r INSTALL_TYPE
+if [[ ! -d "$BOOTSTRAP_D" ]]; then
+    echo "Error: bootstrap directory '$BOOTSTRAP_D' not found" >&2
+    exit 1
+fi
 
-    case "$INSTALL_TYPE" in
-        default)
-            BOOTSTRAP_MODE="default"
-            break
-            ;;
-        full)
-            BOOTSTRAP_MODE="full"
-            break
-            ;;
-        *)
-            echo "Invalid input. Please type 'default' or 'full'."
-            ;;
-    esac
+find -L "$BOOTSTRAP_D" -type f | sort | while IFS= read -r bootstrap; do
+    if [[ -x "$bootstrap" && ! "$bootstrap" =~ "##" && ! "$bootstrap" =~ "~$" ]]; then
+        if ! "$bootstrap"; then
+            echo "Error: bootstrap '$bootstrap' failed" >&2
+            exit 1
+        fi
+    fi
 done
-
-echo "BOOTSTRAP_MODE is set to $BOOTSTRAP_MODE"
