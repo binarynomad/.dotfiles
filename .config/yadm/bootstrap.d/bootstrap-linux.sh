@@ -6,7 +6,6 @@
 # Check if on the proper OS, and skip if not
 export OS_TYPE="$(uname -s)"
 if [[ "$OS_TYPE" != "Linux" ]]; then echo "Skipping Linux scripts..."; exit 0; fi
-echo "Running ${OS_TYPE} Bootstrap..."
 
 # Beginning Installation
 echo "-------------------------------------------------------"
@@ -18,26 +17,33 @@ echo "-------------------------------------------------------"
 # ---------------------------------------------
 
 # Setup some default directories
+echo ""
 echo "Setting up default directories..."
-for dir in bin tmp dev ; do
-    if [[! -d ${HOME}/$dir ]]; then mkdir ${HOME}/$dir; fi
-    echo "Created ${HOME}/$dir"
+for dir in bin tmp dev; do
+    if [ ! -d "${HOME}/$dir" ]; then
+        mkdir -p "${HOME}/$dir"
+        echo "Created ${HOME}/$dir"
+    else
+        echo "${HOME}/$dir already exists"
+    fi
 done
-
 
 # ---------------------------------------------
 # CLI APPS: Default Install
 # ---------------------------------------------
 
 # Prepare OS
-echo "Preparing OS..."
+echo ""
+echo "Updating APT system..."
 sudo apt update ; sudo apt upgrade -y ; sudo apt autoremove -y ; sudo apt autoclean -y
 
 # Install some common CLI tools
+echo ""
 echo "Installing common CLI tools..."
 packages="bat fd-find jq ripgrep tldr"
 apt update
 for package in $packages; do
+    echo "\nInstalling ${package}"
     sudo apt install -y $package
 done
 
