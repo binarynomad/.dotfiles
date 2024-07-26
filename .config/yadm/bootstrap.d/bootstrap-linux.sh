@@ -5,7 +5,7 @@
 
 # Check if on the proper OS, and skip if not
 export OS_TYPE="$(uname -s)"
-if [[ "$OS_TYPE" != "Linux" ]]; then echo "Skipping Linux scripts..."; exit 0; fi
+if [[ "$OS_TYPE" != "Linux" ]]; then echo -e "\nSkipping Linux scripts..."; exit 0; fi
 
 # Beginning Installation
 clear
@@ -35,11 +35,15 @@ done
 
 # Prepare OS
 echo ""
-echo -e "\nUpdating APT system..."; sudo apt update
-echo -e "\nUpgrading APT system..."; sudo apt upgrade -y
-echo -e "\nAutoremove APT system..."; sudo apt autoremove -y
-echo -e "\nAutoclean APT system..."; sudo apt autoclean -y
+echo -e "\n\nUpdating APT system..."; sudo apt update
+echo -e "\n\nUpgrading APT system..."; sudo apt upgrade -y
+echo -e "\n\nAutoremove APT system..."; sudo apt autoremove -y
+echo -e "\n\nAutoclean APT system..."; sudo apt autoclean -y
 
+# Setup Locales for (en_US.UTF-8)
+echo -e "\nSetup Locales for en.US.UTF-8"
+sudo apt install locales-all
+sudo locale-gen en_US.UTF-8
 
 # Install some common CLI tools
 echo ""
