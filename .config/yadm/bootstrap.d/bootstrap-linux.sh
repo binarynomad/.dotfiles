@@ -34,8 +34,11 @@ done
 
 # Prepare OS
 echo ""
-echo "Updating APT system..."
-sudo apt update ; sudo apt upgrade -y ; sudo apt autoremove -y ; sudo apt autoclean -y
+echo "Updating APT system..."; sudo apt update
+echo "Upgrading APT system..."; sudo apt upgrade -y
+echo "Autoremove APT system..."; sudo apt autoremove -y
+echo "Autoclean APT system..."; sudo apt autoclean -y
+
 
 # Install some common CLI tools
 echo ""
@@ -43,7 +46,8 @@ echo "Installing common CLI tools..."
 packages="bat fd-find jq ripgrep tldr"
 apt update
 for package in $packages; do
-    echo "\nInstalling ${package}"
+    echo ""
+    echo "Installing ${package}"
     sudo apt install -y $package
 done
 
@@ -53,7 +57,7 @@ done
 
 echo "Linking some common CLI tools..."
 # FD: Need to setup a link to fdfind so exports work properly.
-ln -s $(which fdfind) ${HOME}/bin/fd
+echo "Linking FD..." ; ln -s $(which fdfind) ${HOME}/bin/fd
 
 # BAT: Need to setup a link to batcat so exports work properly.
-ln -s $(which batcat) ${HOME}/bin/bat
+echo "Linking BAT..." ; ln -s $(which batcat) ${HOME}/bin/bat
