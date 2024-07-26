@@ -20,8 +20,11 @@ echo "-------------------------------------------------------"
 # OS DEFAULT SETTINGS
 # ---------------------------------------------
 
-
-
+# Setup some default directories
+for dir in bin tmp dev ; do
+    if [[! -d ${HOME}/$dir ]]; then mkdir ${HOME}/$dir; fi
+    echo "Created ${HOME}/$dir"
+done
 
 # ---------------------------------------------
 # CLI APPS: Default Install

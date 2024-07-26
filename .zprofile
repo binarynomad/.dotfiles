@@ -10,7 +10,7 @@ test -e ${HOME}/.iterm2_shell_integration.zsh && source ${HOME}/.iterm2_shell_in
 # 1PW: CLI Env for Plugins
 source ${HOME}/.config/op/plugins.sh
 
-# FZF: Env setup 
+# FZF: Env setup -- installed via .vimrc plugin 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # PYENV: Enviroment Setup

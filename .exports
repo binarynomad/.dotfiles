@@ -35,12 +35,13 @@ export LC_ALL='en_US.UTF-8';
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 
 # FZF: Setting fd as the default source for fzf (MUST INSTALL FD FIRST)
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude /Library'
+[ -f /opt/homebrew/bin/fd ] && export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude /Library'
+[ -f ${HOME}/bin/fd ] && export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude /Library'
 
 # FZF: To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-# FZF: Setup defaut display options and keybindings
+# FZF: Setup default display options and keybindings
 export FZF_DEFAULT_OPTS="--no-mouse --height 80% -1 --reverse --multi --inline-info --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -300' --preview-window='right:hidden' --bind='f3:execute(bat --style=numbers {} || less -f {}),f2:toggle-preview,ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy),ctrl-x:execute(rm -i {+})+abort,ctrl-s:jump,ctrl-space:toggle'"
 
 
