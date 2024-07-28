@@ -249,6 +249,7 @@ set lazyredraw  " Don't redraw during macros for better response (N)
 set showcmd  " Show the (partial) command as it’s being typed
 set showmode  " Show the current mode
 set smartcase  " Make search case sensitive if there is uppercase char
+set path+=**   " Fuzzy search into folders, tab-completion (without plugin)
 
 "---Misc Settings---
 set backspace=indent,eol,start  " Allow backspace in insert mode
@@ -270,7 +271,7 @@ set secure  " Disable unsafe commands in per-directory .vimrc files
 set shortmess=atI  " Don’t show the intro message when starting Vim
 set ttyfast  " Optimize for fast terminal connections
 set undolevels=100  " Increase scope of undo
-set wildmenu  " Enhance command-line completion
+set wildmenu " Display all matches when we tab compliete, (:find)
 
 
 " ---- SETTINGS: FileType Editor ---- {{{1
