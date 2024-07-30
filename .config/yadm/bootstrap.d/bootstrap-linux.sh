@@ -48,7 +48,9 @@ sudo locale-gen en_US.UTF-8
 # Install some common CLI tools
 echo ""
 echo "Installing common CLI tools..."
-packages="bat fd-find jq ripgrep tldr"
+
+packages="bat fd-find jq ncdu ripgrep tldr tree"
+
 for package in $packages; do
     echo -e "\nInstalling ${package}"
     sudo apt install -y $package
