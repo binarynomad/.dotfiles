@@ -1,6 +1,10 @@
 #!/bin/sh
+# It is assumed some machines will not have (brew) or (git) preinstalled, so
+# this file is intended to be pulled directly with a curl or browser and run.
 
 # Start the Brew Installer which will also install Xcode/git
+echo -e "\nInstalling XCODE, GIT, BREW...\n"
+
 if [[ -e /opt/homebrew/bin/brew ]]; then
   echo -e "\nXcode, Git, & Brew are already installed; continuing..."
 else

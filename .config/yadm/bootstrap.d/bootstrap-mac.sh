@@ -28,10 +28,8 @@ for dir in bin tmp dev ; do
 done
 
 # ---------------------------------------------
-# CLI APPS: Default Install
+# Brew & Mas APPS: Default Install
 # ---------------------------------------------
-# vim, tldr, 1pw-cli, vd, bat
-# fd, fzf, ripgrep
 
 # if [ -f "$HOME/.Brewfile" ]; then
 # echo "Updating homebrew bundle"
@@ -39,10 +37,9 @@ done
 # fi
 
 # ---------------------------------------------
-# GUI APPS: Default Install
+# Manual Install Apps
 # ---------------------------------------------
-# chrome, 1pw, vscode, slack, zoom, iterm
-
+# Use SetApp to install (Cleanshot, BoltAI, ...)
 
 
 # ---------------------------------------------
