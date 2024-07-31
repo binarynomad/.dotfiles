@@ -86,7 +86,7 @@ if [[ "$OS_TYPE" == "Darwin" ]]; then
 alias db="cd ~/Dropbox"
 alias p="cd ~/Dropbox/Projects"
 alias clients='cd ~/Dropbox/Clients'
-alias oitd='cd ~/ brian@oitd.net\ -\ Google\ Drive/'
+alias oitd='cd ~/brian@oitd.net\ -\ Google\ Drive/My\ Drive/Clients/'
 alias oitd_old='cd ~/Dropbox/Business/Open-IT-Design'
 
 # AI Ollama Specific Aliases
