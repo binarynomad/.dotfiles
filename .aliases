@@ -90,14 +90,14 @@ alias oitd='cd ~/brian@oitd.net\ -\ Google\ Drive/My\ Drive/Clients/'
 alias oitd_old='cd ~/Dropbox/Business/Open-IT-Design'
 
 # AI Ollama Specific Aliases
-alias ai='ollama run mistral'
-alias aic='ollama run codellama'
-alias aicc='ollama run mistral-nemo'
+alias ai='ollama run mistral-nemo'
 alias aio='ollama run llama3'
+alias aic='ollama run codellama'
+alias aicc='ollama run mistral'
 alias ollama_update="ollama list | tail -n +2 | awk '{print \$1}' | xargs -I {} ollama pull {}"
 
 # OSX: Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup'
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; mas upgrade'
 
 # OSX: Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
