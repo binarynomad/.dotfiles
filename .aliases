@@ -97,7 +97,7 @@ alias aicc='ollama run mistral'
 alias ollama_update="ollama list | tail -n +2 | awk '{print \$1}' | xargs -I {} ollama pull {}"
 
 # OSX: Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; mas upgrade'
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; sleep 5 ; mas upgrade'
 
 # OSX: Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
