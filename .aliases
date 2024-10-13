@@ -91,7 +91,7 @@ alias oitd_old='cd ~/Dropbox/Business/Open-IT-Design'
 
 # AI Ollama Specific Aliases
 alias ai='ollama run mistral-nemo'
-alias aio='ollama run llama3'
+alias aio='ollama run llama3.2'
 alias aic='ollama run codellama'
 alias aicc='ollama run mistral'
 alias ollama_update="ollama list | tail -n +2 | awk '{print \$1}' | xargs -I {} ollama pull {}"
