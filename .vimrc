@@ -346,7 +346,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'chrisbra/csv.vim'                 " plugin to edit CSV files (2021-07-29)
 
 "---General Env Plugins---
-Plug 'cohama/lexima.vim'                " add closing pairs to (,{.[.<,\"
+"Plug 'cohama/lexima.vim'                " add closing pairs to (,{.[.<,\"
 Plug 'djoshea/vim-autoread'             " reload_file: keeps file updated
 Plug 'dkarter/bullets.vim'              " autoincement bullet lists
 Plug 'easymotion/vim-easymotion'        " jump_to_spot`: s, /
