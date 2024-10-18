@@ -66,11 +66,19 @@ _fzf_compgen_path() {
 
 # FZF: create "cdf" command to cd into any directory from HOME
 # -------------------------------------
-function cdf() {
-  # uses fd + fzf to search from $HOME for directories
-  cd "$(fd --print0 --hidden --ignore-case --absolute-path --follow --type d \
-  --exclude /Library $1 $HOME \
-  | fzf --read0 --no-multi --exit-0 --select-1)"
+cdf() {
+  # Find and select a directory using fd and fzf
+  local dir
+  dir=$(fd --print0 --hidden --ignore-case --absolute-path --follow --type d \
+           --exclude /Library "$1" "$HOME" \
+           | fzf --read0 --no-multi --exit-0 --select-1)
+
+  # Check if a directory was selected
+  if [ -n "$dir" ]; then
+    cd "$dir" || echo "Failed to change directory to $dir"
+  else
+    echo "No directory selected."
+  fi
 }
 
 # FZF: search and edit file from current location
