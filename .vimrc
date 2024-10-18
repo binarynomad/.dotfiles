@@ -137,12 +137,18 @@ nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 nmap <Leader>fH :Helptags<CR>
 nmap <Leader>fb :Buffers<CR>
 nmap <Leader>fc :Commands<CR>
-nmap <Leader>fe :Files<CR>
+nmap <Leader>fC :Colors<CR>
+nmap <Leader>ff :Files<CR>
 nmap <Leader>fg :GFiles<CR>
+nmap <Leader>fG :GFiles?<CR>
 nmap <Leader>fh :History<CR>
-nmap <Leader>fm :Maps<CR>
+nmap <Leader>fl :Lines<CR>
+nmap <Leader>fL :BLines<CR>
+nmap <Leader>fm :Marks<CR>
+nmap <Leader>fM :Maps<CR>
 nmap <Leader>fr :Rg<Space>
 nmap <Leader>fs :Snippets<CR>
+nmap <Leader>fT :Filetypes<CR>
 
 " NERDTREE : Directory tree and explorer (L-ft)
 " TODO: Possibly remove in favor of Netrw (https://shapeshed.com/vim-netrw/)
@@ -196,7 +202,7 @@ let g:indent_guides_auto_colors = 1
 let g:vim_markdown_folding_style_pythonic = 1
 
 " VIM MARKDOWN : Markdown Syntax, automation
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+" let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 
 " UNDOTREE : program to visualize/switch unto changes (L-uu)
 nnoremap <Leader>uu :UndotreeToggle<cr>
@@ -344,6 +350,7 @@ call plug#begin('~/.vim/plugged')
 "---TESTING Plugins---
 
 Plug 'chrisbra/csv.vim'                 " plugin to edit CSV files (2021-07-29)
+Plug 'airblade/vim-rooter'              " used to scope your directory to the current project
 
 "---General Env Plugins---
 "Plug 'cohama/lexima.vim'                " add closing pairs to (,{.[.<,\"
@@ -409,6 +416,7 @@ Plug 'nanotech/jellybeans.vim'          " color_scheme
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
 Plug 'tomasr/molokai'                   " color_scheme
 Plug 'sonph/onehalf', {'rtp': 'vim/'}   " color_scheme
+Plug 'ghifarit53/tokyonight-vim', { 'as': 'tokyonight' } " color_scheme 
 
 call plug#end()
 
@@ -430,7 +438,13 @@ set t_ZH="\e[[3m"
 set t_ZR="\e[[23m"
 
 "---Dracula---
-colorscheme dracula
+"colorscheme dracula
+
+"---Tokyonight---
+let g:tokyonight_style = 'night' " available: night, storm
+let g:tokyonight_enable_italic = 1
+let g:airline_theme = "tokyonight"
+colorscheme tokyonight
 
 "---Molokai---
 "colorscheme molokai
