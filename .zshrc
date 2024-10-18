@@ -138,3 +138,5 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+# FZF: Main import/setup of fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
