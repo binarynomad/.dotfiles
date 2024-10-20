@@ -80,8 +80,15 @@ nnoremap <Leader>nn :enew<CR>
 " Map shortcut for quick folding/unfolding
 nnoremap <Leader><space> za
 
+" Map shortcut for spell checking (use s[ and z=)
+nnoremap <Leader>sc :set spell spelllang=en_us<CR>
+nnoremap <Leader>sp :normal! mz[s1z=`z<CR>
+
 " Map F2 to all visable line numbers and special chars (for copy)
 nmap <F2> :set norelativenumber!<bar>set nonumber!<bar>set nolist!<CR>
+
+" Map Leader-F2 to switch between relative and sequential line numbers
+nmap <leader><F2> :set relativenumber!<CR>
 
 " Save a file as root (L-W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
@@ -125,15 +132,34 @@ set backupskip=/tmp/*,/private/tmp/*
 
 
 " ---- CONFIGS: Application Specific ---- {{{1
+"
+" AIRLINE : Advanced status bar on the bottom
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+if has('macunix')  " use powerline fonts if launched from iTerm
+  let g:airline_powerline_fonts = 1
+endif
 
 " ARGWRAP : Reformats Python lists between one to multiline (L-1)
 nnoremap <silent> <leader>1 :ArgWrap<CR>
 
-" WHICHKEY : Activate to see what is mapped to Leader (L)
-nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+" EASYALIGN : Align text based on characters visual (vipga) motion/text (gaip)
+" note: Align comments and ":  vipga-<space>
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+" EASYMOTION : Quick search/jump to text (s)
+let g:EasyMotion_do_mapping = 0  " disable extra mappings
+let g:EasyMotion_smartcase = 1  " smartcase searching
+nmap s <Plug>(easymotion-s)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
 
 " FZF FINDER : Fuzzy searching of files, buffers, history, etc. (L-f?)
+set rtp+=/opt/homebrew/opt/fzf
 nmap <Leader>fH :Helptags<CR>
 nmap <Leader>fb :Buffers<CR>
 nmap <Leader>fc :Commands<CR>
@@ -150,65 +176,58 @@ nmap <Leader>fr :Rg<Space>
 nmap <Leader>fs :Snippets<CR>
 nmap <Leader>fT :Filetypes<CR>
 
+" GOYO / LIMELIGHT : Distraction free and focused writing (L-gy)
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
+nnoremap <Leader>gy :Goyo<CR>
+
+" INDENT GUIDES : Bars showing indent levels (L-ig)
+" hi IndentGuidesOdd  ctermbg=darkgrey
+" hi IndentGuidesEven ctermbg=black
+let g:indent_guides_enable_on_vim_startup = 0
+let g:indent_guides_start_level = 1
+let g:indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 1
+
+" MARKDOWN : Markdown Syntax, automation
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+" MARKDOWN FOLDING : Markdown folding styles
+let g:vim_markdown_folding_style_pythonic = 1
+
+" MARKED : Activate MacOS Marked2 with (L-md)
+nnoremap <Leader>md :MarkedOpen!<CR>
+
 " NERDTREE : Directory tree and explorer (L-ft)
 " TODO: Possibly remove in favor of Netrw (https://shapeshed.com/vim-netrw/)
 nmap <Leader>ft :NERDTree<CR>
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
-" EASYMOTION : Quick search/jump to text (s)
-let g:EasyMotion_do_mapping = 0  " disable extra mappings
-let g:EasyMotion_smartcase = 1  " smartcase searching
-nmap s <Plug>(easymotion-s)
-map  / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map  n <Plug>(easymotion-next)
-map  N <Plug>(easymotion-prev)
-
-" EASYALIGN : Align text based on characters visual (vipga) motion/text (gaip)
-" note: Align comments and ":  vipga-<space>
-xmap ga <Plug>(EasyAlign)
-nmap ga <Plug>(EasyAlign)
-
-" VIM MARKED : Activate MacOS Marked2 with (L-md)
-nnoremap <Leader>md :MarkedOpen!<CR>
-
-" GOYO / LIMELIGHT : Distraction free and focused writing (L-gy)
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
-nnoremap <Leader>gy :Goyo<CR>
+" OLLAMA : Plugin settings and keybindings
+autocmd VimEnter * Ollama disable
+nmap <Leader>ai :Ollama toggle<CR>
+" Default chat model
+let g:ollama_chat_model = 'llama3.2'
+" Codellama models
+let g:ollama_model = 'mistral-nemo'
+" mistral-nemo:latest        7.1 gb
+" mistral:latest             4.1 gb
+" llama3.2:latest            2.0 gb
 
 " SEARCHTASKS : Search files for tags like TODO (L-st)
 " note: use the function ClearQuickfillList (L-cc) to free up
 let g:searchtasks_list=["TODO", "FIXME"]
 nnoremap <Leader>st :SearchTasks %<CR>
 
-" AIRLINE : Advanced status bar on the bottom
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-if has('macunix')  " use powerline fonts if launched from iTerm
-  let g:airline_powerline_fonts = 1
-endif
-
-" INDENT GUIDES : Bars showing indent levels
-" hi IndentGuidesOdd  ctermbg=darkgrey
-" hi IndentGuidesEven ctermbg=black
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_start_level = 1
-let g:indent_guides_guide_size = 1
-let g:indent_guides_auto_colors = 1
-
-" VIM MARKDOWN FOLDING : Markdown folding styles
-let g:vim_markdown_folding_style_pythonic = 1
-
-" VIM MARKDOWN : Markdown Syntax, automation
-" let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+" SNIPMATE : Plugin that allows for smart/responsive text snippets
+let g:snipMate = { 'snippet_version' : 1 }
 
 " UNDOTREE : program to visualize/switch unto changes (L-uu)
 nnoremap <Leader>uu :UndotreeToggle<cr>
 
-" SNIPMATE : Plugin that allows for smart/responsive text snippets
-let g:snipMate = { 'snippet_version' : 1 }
+" WHICHKEY : Activate to see what is mapped to Leader (L)
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+
 
 " ---- SETTINGS: General Editor ---- {{{1
 
@@ -351,6 +370,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'chrisbra/csv.vim'                 " plugin to edit CSV files (2021-07-29)
 Plug 'airblade/vim-rooter'              " used to scope your directory to the current project
+Plug 'mbbill/undotree'                  " full undo tracking and diffs
+
 
 "---General Env Plugins---
 "Plug 'cohama/lexima.vim'                " add closing pairs to (,{.[.<,\"
@@ -366,39 +387,39 @@ Plug 'junegunn/limelight.vim'           " dulls colors of paragraphs surrounding
 Plug 'junegunn/vim-easy-align'          " align text in columns on markers
 Plug 'lingceng/z.vim'                   " dir_jump: uses Z for your most used dirs (:Z dir)
 Plug 'liuchengxu/vim-which-key'         " show some of your mappings live
-Plug 'mbbill/undotree'                  " full undo tracking and diffs
 Plug 'mhinz/vim-startify'               " vim startup splashscreen
 Plug 'scrooloose/nerdtree'              " file_tree: remap <Leader>f<CR>
 
 "---TextObj Plugins---
-Plug 'kana/vim-textobj-user'            " used by the other object plugins
 Plug 'glts/vim-textobj-comment'         " vic: select all in commented block
 Plug 'kana/vim-textobj-line'            " vil: select all in line
+Plug 'kana/vim-textobj-user'            " used by the other object plugins
 Plug 'michaeljsmith/vim-indent-object'  " text object, based on indentation levels ai,ii,aI,iI
 Plug 'wellle/targets.vim'               " smart selection between ([{<\"''\"}])
 
 "---Markdown Plugins---
-Plug 'tpope/vim-markdown'               " markdown syntax and list management
-Plug 'masukomi/vim-markdown-folding'    " markdown_header_folding
 Plug 'itspriddle/vim-marked'            " launch MacOS Marked2.app
+Plug 'masukomi/vim-markdown-folding'    " markdown_header_folding
+Plug 'tpope/vim-markdown'               " markdown syntax and list management
 
 "---Coding Plugins---
 Plug 'FooSoft/vim-argwrap'              " spread_condense_arrays <L>1
 Plug 'airblade/vim-gitgutter'           " git: shows git diff in the gutter
+Plug 'gergap/vim-ollama'                " plugin to utilize a local ollama install for AI work
 Plug 'honza/vim-snippets'               " snippet_groups
 Plug 'nathanaelkane/vim-indent-guides'  " indentation levels shown with columns
 Plug 'tpope/vim-commentary'             " comment out using vim motions/objects
 Plug 'tpope/vim-fugitive'               " git_cmds: run with :Git $cmd
 Plug 'tpope/vim-repeat'                 " global_repeat_actions
-Plug 'tpope/vim-surround'               " enclose_txt: cs,ds,ys,S, yss, VS
-Plug 'vim-syntastic/syntastic'          " syntax checker using exteral prog (flake8, pylint, pyflakes)
+Plug 'tpope/vim-surround'               " enclose_txt: S',cs,ds,ys,yss,VS
 Plug 'vim-airline/vim-airline'          " status_line
 Plug 'vim-airline/vim-airline-themes'   " status_line_themes
+Plug 'vim-syntastic/syntastic'          " syntax checker using exteral prog (flake8, pylint, pyflakes)
 
 "---Python Plugins---
 Plug 'bitc/vim-bad-whitespace'          " highlight_spaces
 Plug 'nvie/vim-flake8'                  " python_pep8: F7; Needs brew install flake8
-Plug 'vim-python/python-syntax'         " python_syntax 
+Plug 'vim-python/python-syntax'         " python_syntax
 Plug 'vim-scripts/indentpython.vim'     " indentation: using PEP8
 
 "---Snippit Engine Plugins---
@@ -411,12 +432,12 @@ else
 endif
 
 "---ColorSchemes---
-Plug 'dracula/vim', { 'as': 'dracula' } " color_scheme 
-Plug 'nanotech/jellybeans.vim'          " color_scheme
 Plug 'catppuccin/vim', { 'as': 'catppuccin' }
-Plug 'tomasr/molokai'                   " color_scheme
+Plug 'dracula/vim', { 'as': 'dracula' } " color_scheme
+Plug 'ghifarit53/tokyonight-vim', { 'as': 'tokyonight' } " color_scheme
+Plug 'nanotech/jellybeans.vim'          " color_scheme
 Plug 'sonph/onehalf', {'rtp': 'vim/'}   " color_scheme
-Plug 'ghifarit53/tokyonight-vim', { 'as': 'tokyonight' } " color_scheme 
+Plug 'tomasr/molokai'                   " color_scheme
 
 call plug#end()
 
@@ -441,19 +462,19 @@ set t_ZR="\e[[23m"
 "colorscheme dracula
 
 "---Tokyonight---
+colorscheme tokyonight
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
 let g:airline_theme = "tokyonight"
-colorscheme tokyonight
 
 "---Molokai---
 "colorscheme molokai
-"let g:molokai_original = 1
-"let g:rehash256 = 1  " bring the 256 color version as close as possible
+let g:molokai_original = 1
+let g:rehash256 = 1  " bring the 256 color version as close as possible
 
 "---OneHalfDark---
 "colorscheme onehalfdark
-"let g:airline_theme='onehalfdark'
+let g:airline_theme='onehalfdark'
 
 
 " ---- ABBREVIATIONS: Mini-Snippets ---- {{{1
@@ -555,7 +576,7 @@ endif
 
 "---- TESTING AREA: Trying out new options/functions ---- {{{1
 
-" "NETRW : Test out the built-in file explorer in stead of NERDTree
+" "NETRW : Test out the built-in file explorer instead of NERDTree
 " "https://blog.stevenocchipinti.com/2016/12/28/using-netrw-instead-of-nerdtree-for-vim/
 " " Disable banner
 " let g:netrw_banner = 0
@@ -576,5 +597,4 @@ endif
 " inoremap <Leader>nt <ESC>:Lex<CR>:vertical resize 30<CR>
 " nnoremap <Leader>nt :Lex<CR>:vertical resize 30<CR>
 
-"---- TESTING FZF: normally I use via plugin, but this was in the brew update
-set rtp+=/opt/homebrew/opt/fzf
+
