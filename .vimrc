@@ -76,6 +76,7 @@ noremap <silent> ? :nohlsearch<CR>
 nnoremap <Leader>b :bNext<CR>
 nnoremap <Leader>dd :bdelete<CR>
 nnoremap <Leader>nn :enew<CR>
+nnoremap <Leader>xx :q!<CR>
 
 " Map shortcut for quick folding/unfolding
 nnoremap <Leader><space> za
@@ -131,8 +132,22 @@ endif
 set backupskip=/tmp/*,/private/tmp/*
 
 
-" ---- CONFIGS: Application Specific ---- {{{1
-"
+" ---- CONFIGS: App/Plugin Specific ---- {{{1
+
+" AI : OpenAI / ChatGPT keybindings
+" complete text on the current line or in visual selection
+nnoremap <leader>ai :AI<CR>
+xnoremap <leader>ai :AI<CR>
+" edit text with a custom prompt
+xnoremap <leader>ae :AIEdit
+nnoremap <leader>ae :AIEdit
+" edit text with a custom prompt
+xnoremap <leader>as :AIEdit fix grammar and spelling<CR>
+nnoremap <leader>as :AIEdit fix grammar and spelling<CR>
+" trigger chat
+xnoremap <leader>ac :AIChat<CR>
+nnoremap <leader>ac :AIChat<CR>"
+
 " AIRLINE : Advanced status bar on the bottom
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -204,14 +219,14 @@ let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 " OLLAMA : Plugin settings and keybindings
 autocmd VimEnter * Ollama disable
-nmap <Leader>ai :Ollama toggle<CR>
-" Default chat model
-let g:ollama_chat_model = 'llama3.2'
-" Codellama models
+nmap <Leader>ao :Ollama toggle<CR>
+let g:ollama_debug = 0
 let g:ollama_model = 'mistral-nemo'
+let g:ollama_chat_model = 'llama3.2'
 " mistral-nemo:latest        7.1 gb
 " mistral:latest             4.1 gb
 " llama3.2:latest            2.0 gb
+" deepseek-coder-v2:16b      8.9 GB
 
 " SEARCHTASKS : Search files for tags like TODO (L-st)
 " note: use the function ClearQuickfillList (L-cc) to free up
@@ -371,6 +386,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'chrisbra/csv.vim'                 " plugin to edit CSV files (2021-07-29)
 Plug 'airblade/vim-rooter'              " used to scope your directory to the current project
 Plug 'mbbill/undotree'                  " full undo tracking and diffs
+Plug 'madox2/vim-ai'                    " OpenAI / ChatGPT integration (needs curl and OPENAI_API_KEY)
 
 
 "---General Env Plugins---
@@ -447,11 +463,15 @@ call plug#end()
 
 "---Shared Settings---
 
-" Setup TRUECOLORS for full color range
-" warning: this can cause visual issues in terms not supporting true-colors
-" Linux has termguicolors but it ruins the colors...
-if has('termguicolors') && (has('mac') || has('win32'))
-    set termguicolors
+set background=dark
+
+" Set Truecolors if the terminal is iTerm
+if &term =~ '256color' && exists("$ITERM_PROFILE")
+	if has('termguicolors')
+		let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+		let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+		set termguicolors
+	endif
 endif
 
 " Setup italic text so it doesn't have a colored background
@@ -474,7 +494,7 @@ let g:rehash256 = 1  " bring the 256 color version as close as possible
 
 "---OneHalfDark---
 "colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
+"let g:airline_theme='onehalfdark'
 
 
 " ---- ABBREVIATIONS: Mini-Snippets ---- {{{1
