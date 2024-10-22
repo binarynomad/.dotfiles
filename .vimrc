@@ -135,9 +135,12 @@ set backupskip=/tmp/*,/private/tmp/*
 " ---- CONFIGS: App/Plugin Specific ---- {{{1
 
 " AI : OpenAI / ChatGPT keybindings
+" make sure your env has OPENAI_API_KEY
 " complete text on the current line or in visual selection
 nnoremap <leader>ai :AI<CR>
 xnoremap <leader>ai :AI<CR>
+nnoremap <leader>aI :AI
+xnoremap <leader>aI :AI
 " edit text with a custom prompt
 xnoremap <leader>ae :AIEdit
 nnoremap <leader>ae :AIEdit
@@ -174,6 +177,7 @@ map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
 " FZF FINDER : Fuzzy searching of files, buffers, history, etc. (L-f?)
+" (recommended installs: Rg, bat)
 set rtp+=/opt/homebrew/opt/fzf
 nmap <Leader>fH :Helptags<CR>
 nmap <Leader>fb :Buffers<CR>
@@ -320,7 +324,7 @@ filetype plugin indent on  " Make sure we are loading user overwrites
 syntax on  " Enable syntax highlighting (after filetype on)
 
 " Create user overwrite directory for filetype
-" note: user file Locations  ~/.vim/after/ftplugin/<filetype>.vim
+" note: user file Locations  $HOME/.vim/after/ftplugin/<filetype>.vim
 if !isdirectory($VIMHOME."/after/ftplugin")
     call mkdir($VIMHOME."/after/ftplugin", "p", 0700)
   endif
@@ -329,45 +333,40 @@ if !isdirectory($VIMHOME."/after/ftplugin")
 let vim_settings=[
 \ 'set foldmethod=marker       " set for editing the .vimrc file'
 \]"
-call writefile(vim_settings, $VIMHOME."/after/ftplugin/vim.vim")
-
+if !filereadable($VIMHOME."/after/ftplugin/vim.vim")
+    call writefile(markdown_settings, $VIMHOME."/after/ftplugin/vim.vim")
+endif
 "---Python Settings--- {{{2
 let python_settings=[
-\ 'autocmd BufWritePre *.py :%s/\s\+$//e',
+\ 'autocmd BufWritePre *.py :%s/\s\+$//e   " strip whitespace on save',
 \ 'let python_highlight_all=1  " enable all syntax highlighting features',
-\ 'set autoindent              " keep indentation going',
 \ 'set colorcolumn=80          " show line length marker',
-\ 'set encoding=utf-8          " best for use with python3',
-\ 'set expandtab               " convert <tab> to <space>',
 \ 'set fileformat=unix         " avoid conversion issues with github',
 \ 'set formatoptions=tcqroj    " text wrapping / comment rules',
 \ 'set foldlevel=1             " set default folding level at 1',
 \ 'set foldmethod=indent       " set all python files for indent folding',
-\ 'set shiftround              " use multiple of shiftwidth when indenting',
 \ 'set shiftwidth=4            " spaces for shifting',
 \ 'set softtabstop=4           " jump to multiples of tabs',
 \ 'set tabstop=8               " standard spaceing for starting tab (PEP8)',
 \ 'set textwidth=79            " wrap text at 79 for PEP8',
-\ 'syntax on                   " make sure highlighting is on',
 \]"
-call writefile(python_settings, $VIMHOME."/after/ftplugin/python.vim")
+if !filereadable($VIMHOME."/after/ftplugin/python.vim")
+  call writefile(python_settings, $VIMHOME."/after/ftplugin/python.vim")
+endif
 
 "---Markdown Settings--- {{{2
 let markdown_settings=[
 \ 'set colorcolumn=80          " show line length marker',
 \ 'set conceallevel=1          " Show the formatting chars',
-\ 'set encoding=utf-8          " best for use with python3',
-\ 'set expandtab               " convert <tab> to <space>',
-\ 'set foldlevel=0             " set default folding level at 1',
 \ 'set foldmethod=expr         " set all markdown files for expression folding',
 \ 'set formatoptions=tcqnlj    " text wrapping / comment rules',
-\ 'set shiftround              " use multiple of shiftwidth when indenting',
 \ 'set shiftwidth=4            " spaces for shifting',
 \ 'set softtabstop=4           " jump to multiples of tabs',
 \ 'set tabstop=8               " standard spaceing for starting tab (PEP8)',
-\ 'syntax on                   " make sure highlighting is on',
 \]"
-call writefile(markdown_settings, $VIMHOME."/after/ftplugin/markdown.vim")
+if !filereadable($VIMHOME."/after/ftplugin/markdown.vim")
+  call writefile(markdown_settings, $VIMHOME."/after/ftplugin/markdown.vim")
+endif
 
 " ---- PLUGINS: Plugin Install List ---- {{{1
 
@@ -585,7 +584,7 @@ if has("autocmd")
     " Enable file type detection
     filetype on
     " Treat .json files as .js
-    autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+    "autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
     " Treat .md files as Markdown
     autocmd BufRead,BufNewFile *.md setlocal textwidth=80
     autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
@@ -595,26 +594,4 @@ if has("autocmd")
 endif
 
 "---- TESTING AREA: Trying out new options/functions ---- {{{1
-
-" "NETRW : Test out the built-in file explorer instead of NERDTree
-" "https://blog.stevenocchipinti.com/2016/12/28/using-netrw-instead-of-nerdtree-for-vim/
-" " Disable banner
-" let g:netrw_banner = 0
-" " Set list style to tree view
-" let g:netrw_liststyle = 3
-" " Open files in previous window
-" let g:netrw_browse_split = 4
-" " Open splits to the right
-" let g:netrw_altv = 1
-" " Set window size
-" let g:netrw_winsize = 25
-" " Auto open netrw on VimEnter
-" augroup ProjectDrawer
-"   autocmd!
-"   autocmd VimEnter * :Lex
-" augroup END
-" " Map <Leader>nt to open netrw and resize the window
-" inoremap <Leader>nt <ESC>:Lex<CR>:vertical resize 30<CR>
-" nnoremap <Leader>nt :Lex<CR>:vertical resize 30<CR>
-
 
