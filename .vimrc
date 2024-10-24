@@ -73,7 +73,7 @@ nmap <Leader>rf gqap
 noremap <silent> ? :nohlsearch<CR>
 
 " Map buffer commands/keys
-nnoremap <Leader>b :bNext<CR>
+nnoremap <Leader>bb :bNext<CR>
 nnoremap <Leader>dd :bdelete<CR>
 nnoremap <Leader>nn :enew<CR>
 nnoremap <Leader>xx :q!<CR>
@@ -217,16 +217,16 @@ let g:vim_markdown_folding_style_pythonic = 1
 nnoremap <Leader>md :MarkedOpen!<CR>
 
 " NERDTREE : Directory tree and explorer (L-ft)
-" TODO: Possibly remove in favor of Netrw (https://shapeshed.com/vim-netrw/)
-nmap <Leader>ft :NERDTree<CR>
+" Custom open command that will toggle, and open at file in buffer
+nnoremap <silent> <expr> <Leader>ft g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
 
 " OLLAMA : Plugin settings and keybindings
-autocmd VimEnter * Ollama disable
-nmap <Leader>ao :Ollama toggle<CR>
-let g:ollama_debug = 0
-let g:ollama_model = 'mistral-nemo'
-let g:ollama_chat_model = 'llama3.2'
+" autocmd VimEnter * Ollama disable
+" nmap <Leader>ao :Ollama toggle<CR>
+" let g:ollama_debug = 0
+" let g:ollama_model = 'mistral-nemo'
+" let g:ollama_chat_model = 'llama3.2'
 " mistral-nemo:latest        7.1 gb
 " mistral:latest             4.1 gb
 " llama3.2:latest            2.0 gb
@@ -318,55 +318,6 @@ set undolevels=100  " Increase scope of undo
 set wildmenu " Display all matches when we tab compliete, (:find)
 
 
-" ---- SETTINGS: FileType Editor ---- {{{1
-"
-filetype plugin indent on  " Make sure we are loading user overwrites
-syntax on  " Enable syntax highlighting (after filetype on)
-
-" Create user overwrite directory for filetype
-" note: user file Locations  $HOME/.vim/after/ftplugin/<filetype>.vim
-if !isdirectory($VIMHOME."/after/ftplugin")
-    call mkdir($VIMHOME."/after/ftplugin", "p", 0700)
-  endif
-
-"---Vim Settings--- {{{2
-let vim_settings=[
-\ 'set foldmethod=marker       " set for editing the .vimrc file'
-\]"
-if !filereadable($VIMHOME."/after/ftplugin/vim.vim")
-    call writefile(markdown_settings, $VIMHOME."/after/ftplugin/vim.vim")
-endif
-"---Python Settings--- {{{2
-let python_settings=[
-\ 'autocmd BufWritePre *.py :%s/\s\+$//e   " strip whitespace on save',
-\ 'let python_highlight_all=1  " enable all syntax highlighting features',
-\ 'set colorcolumn=80          " show line length marker',
-\ 'set fileformat=unix         " avoid conversion issues with github',
-\ 'set formatoptions=tcqroj    " text wrapping / comment rules',
-\ 'set foldlevel=1             " set default folding level at 1',
-\ 'set foldmethod=indent       " set all python files for indent folding',
-\ 'set shiftwidth=4            " spaces for shifting',
-\ 'set softtabstop=4           " jump to multiples of tabs',
-\ 'set tabstop=8               " standard spaceing for starting tab (PEP8)',
-\ 'set textwidth=79            " wrap text at 79 for PEP8',
-\]"
-if !filereadable($VIMHOME."/after/ftplugin/python.vim")
-  call writefile(python_settings, $VIMHOME."/after/ftplugin/python.vim")
-endif
-
-"---Markdown Settings--- {{{2
-let markdown_settings=[
-\ 'set colorcolumn=80          " show line length marker',
-\ 'set conceallevel=1          " Show the formatting chars',
-\ 'set foldmethod=expr         " set all markdown files for expression folding',
-\ 'set formatoptions=tcqnlj    " text wrapping / comment rules',
-\ 'set shiftwidth=4            " spaces for shifting',
-\ 'set softtabstop=4           " jump to multiples of tabs',
-\ 'set tabstop=8               " standard spaceing for starting tab (PEP8)',
-\]"
-if !filereadable($VIMHOME."/after/ftplugin/markdown.vim")
-  call writefile(markdown_settings, $VIMHOME."/after/ftplugin/markdown.vim")
-endif
 
 " ---- PLUGINS: Plugin Install List ---- {{{1
 
@@ -383,13 +334,12 @@ call plug#begin('~/.vim/plugged')
 "---TESTING Plugins---
 
 Plug 'chrisbra/csv.vim'                 " plugin to edit CSV files (2021-07-29)
-Plug 'airblade/vim-rooter'              " used to scope your directory to the current project
 Plug 'mbbill/undotree'                  " full undo tracking and diffs
-Plug 'madox2/vim-ai'                    " OpenAI / ChatGPT integration (needs curl and OPENAI_API_KEY)
-
+" Plug 'gergap/vim-ollama'                " plugin to utilize a local ollama install for AI work
+" Plug 'cohama/lexima.vim'                " add closing pairs to (,{.[.<,\"
+"Plug 'jiangmiao/auto-pairs'
 
 "---General Env Plugins---
-"Plug 'cohama/lexima.vim'                " add closing pairs to (,{.[.<,\"
 Plug 'djoshea/vim-autoread'             " reload_file: keeps file updated
 Plug 'dkarter/bullets.vim'              " autoincement bullet lists
 Plug 'easymotion/vim-easymotion'        " jump_to_spot`: s, /
@@ -417,10 +367,13 @@ Plug 'itspriddle/vim-marked'            " launch MacOS Marked2.app
 Plug 'masukomi/vim-markdown-folding'    " markdown_header_folding
 Plug 'tpope/vim-markdown'               " markdown syntax and list management
 
+"---AI Plugins---
+Plug 'madox2/vim-ai'                    " OpenAI / ChatGPT integration (needs curl and OPENAI_API_KEY)
+"
+
 "---Coding Plugins---
-Plug 'FooSoft/vim-argwrap'              " spread_condense_arrays <L>1
+Plug 'FooSoft/vim-argwrap'              " spread_condense_arrays (L-1)
 Plug 'airblade/vim-gitgutter'           " git: shows git diff in the gutter
-Plug 'gergap/vim-ollama'                " plugin to utilize a local ollama install for AI work
 Plug 'honza/vim-snippets'               " snippet_groups
 Plug 'nathanaelkane/vim-indent-guides'  " indentation levels shown with columns
 Plug 'tpope/vim-commentary'             " comment out using vim motions/objects
@@ -543,12 +496,12 @@ endfunction
 com! JSONFormatter call JSONFormatter()
 
 " ---MarkCodeBlock--- {{{2
-" Add Markdown code-block current visual group (m_)
+" Add Markdown code-block current visual group (m_ <--UNDERSCORE)
 function! s:MarkCodeBlock() abort
     call append(line("'<")-1, '```')
     call append(line("'>"), '```')
 endfunction
-xnoremap m_ :<c-u>call <sid>MarkCodeBlock()<CR>
+xnoremap <Leader>mc :<c-u>call <sid>MarkCodeBlock()<CR>
 
 " ---- USER COMMANDS: Custom commands filtered through cli ---- {{{1
 "
@@ -583,15 +536,94 @@ command -range=% -bar URLDecode :<line1>,<line2>!python3 -c 'import sys; from ur
 if has("autocmd")
     " Enable file type detection
     filetype on
-    " Treat .json files as .js
-    "autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-    " Treat .md files as Markdown
-    autocmd BufRead,BufNewFile *.md setlocal textwidth=80
     autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
-    autocmd BufRead,BufNewFile *.txt setlocal textwidth=80
     autocmd BufNewFile,BufRead *.txt setlocal filetype=markdown
     autocmd FileType gitcommit setlocal textwidth=80
 endif
 
+" ---- SETTINGS: FileType Customization ---- {{{1
+"
+filetype plugin indent on  " Make sure we are loading user overwrites
+syntax on  " Enable syntax highlighting (after filetype on)
+
+" Create user overwrite directory for filetype
+" note: user file Locations  $HOME/.vim/after/ftplugin/<filetype>.vim
+if !isdirectory($VIMHOME."/after/ftplugin")
+    call mkdir($VIMHOME."/after/ftplugin", "p", 0700)
+  endif
+
+"---Vim Settings--- {{{2
+let vim_settings=[
+\ 'set foldmethod=marker       " set for editing the .vimrc file'
+\]"
+if !filereadable($VIMHOME."/after/ftplugin/vim.vim")
+    call writefile(markdown_settings, $VIMHOME."/after/ftplugin/vim.vim")
+endif
+"---Python Settings--- {{{2
+let python_settings=[
+\ 'autocmd BufWritePre *.py :%s/\s\+$//e   " strip whitespace on save',
+\ 'let python_highlight_all=1  " enable all syntax highlighting features',
+\ 'set colorcolumn=80          " show line length marker',
+\ 'set fileformat=unix         " avoid conversion issues with github',
+\ 'set formatoptions=tcqroj    " text wrapping / comment rules',
+\ 'set foldlevel=1             " set default folding level at 1',
+\ 'set foldmethod=indent       " set all python files for indent folding',
+\ 'set shiftwidth=4            " spaces for shifting',
+\ 'set softtabstop=4           " jump to multiples of tabs',
+\ 'set tabstop=8               " standard spaceing for starting tab (PEP8)',
+\ 'set textwidth=79            " wrap text at 79 for PEP8',
+\]"
+if !filereadable($VIMHOME."/after/ftplugin/python.vim")
+  call writefile(python_settings, $VIMHOME."/after/ftplugin/python.vim")
+endif
+
+"---Markdown Settings--- {{{2
+let markdown_settings=[
+\ 'set colorcolumn=80          " show line length marker',
+\ 'set conceallevel=1          " Show the formatting chars',
+\ 'set foldmethod=expr         " set all markdown files for expression folding',
+\ 'set formatoptions=tcqnlj    " text wrapping / comment rules',
+\ 'set shiftwidth=4            " spaces for shifting',
+\ 'set softtabstop=4           " jump to multiples of tabs',
+\ 'set tabstop=8               " standard spaceing for starting tab (PEP8)',
+\ 'set textwidth=79            " wrap text at 79 for PEP8',
+\]"
+if !filereadable($VIMHOME."/after/ftplugin/markdown.vim")
+  call writefile(markdown_settings, $VIMHOME."/after/ftplugin/markdown.vim")
+endif
+
 "---- TESTING AREA: Trying out new options/functions ---- {{{1
+
+" let my_vim_cheatsheet=[
+"       \"jk/kj    - this is how to get back to normal mode",
+"       \"<Leader>ft    - bring up NERDTree",
+"       \"<Leader>ff    - FzF search for a FILE",
+" \]"
+let my_vim_cheatsheet=[
+      \"jk/kj    - this is how to get back to normal mode",
+      \"<Leader>ft    - bring up NERDTree",
+      \"<Leader>ff    - FzF search for a FILE",
+\]"
+
+function! ShowCheatSheet(varname)
+    " Open a new window
+    vnew
+    " Set the buffer as a scratch buffer
+    setlocal buftype=nofile
+    " Disable swap file
+    setlocal noswapfile
+    " Put the variable's contents into the buffer
+    "exe "put =" . a:varname
+    for item in a:varname
+        call append('$', item)
+    endfor
+    " Set buffer to be read-only
+    "setlocal readonly
+    " Prevent modification by accident
+    setlocal nomodifiable
+    " Automatically delete the buffer when closing the window
+    autocmd BufLeave <buffer> bwipeout
+endfunction
+noremap <leader>hh :call ShowCheatSheet(my_vim_cheatsheet)<CR>
+
 
