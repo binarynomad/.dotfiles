@@ -1,6 +1,5 @@
 " ----------------------------------------
 " VIMRC SYSTEM SETTINGS
-" Version: 2021-07-28
 " ----------------------------------------
 " vim --clean (to run default vim)
 
@@ -203,10 +202,10 @@ nnoremap <Leader>gy :Goyo<CR>
 " INDENT GUIDES : Bars showing indent levels (L-ig)
 " hi IndentGuidesOdd  ctermbg=darkgrey
 " hi IndentGuidesEven ctermbg=black
-let g:indent_guides_enable_on_vim_startup = 0
-let g:indent_guides_start_level = 1
-let g:indent_guides_guide_size = 1
 let g:indent_guides_auto_colors = 1
+let g:indent_guides_enable_on_vim_startup = 0
+let g:indent_guides_guide_size = 0
+let g:indent_guides_start_level = 1
 
 " MARKDOWN : Markdown Syntax, automation
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
@@ -334,10 +333,7 @@ call plug#begin('~/.vim/plugged')
 "---TESTING Plugins---
 
 Plug 'chrisbra/csv.vim'                 " plugin to edit CSV files (2021-07-29)
-Plug 'mbbill/undotree'                  " full undo tracking and diffs
 " Plug 'gergap/vim-ollama'                " plugin to utilize a local ollama install for AI work
-" Plug 'cohama/lexima.vim'                " add closing pairs to (,{.[.<,\"
-"Plug 'jiangmiao/auto-pairs'
 
 "---General Env Plugins---
 Plug 'djoshea/vim-autoread'             " reload_file: keeps file updated
@@ -352,6 +348,7 @@ Plug 'junegunn/limelight.vim'           " dulls colors of paragraphs surrounding
 Plug 'junegunn/vim-easy-align'          " align text in columns on markers
 Plug 'lingceng/z.vim'                   " dir_jump: uses Z for your most used dirs (:Z dir)
 Plug 'liuchengxu/vim-which-key'         " show some of your mappings live
+Plug 'mbbill/undotree'                  " full undo tracking and diffs
 Plug 'mhinz/vim-startify'               " vim startup splashscreen
 Plug 'scrooloose/nerdtree'              " file_tree: remap <Leader>f<CR>
 
@@ -368,8 +365,9 @@ Plug 'masukomi/vim-markdown-folding'    " markdown_header_folding
 Plug 'tpope/vim-markdown'               " markdown syntax and list management
 
 "---AI Plugins---
-Plug 'madox2/vim-ai'                    " OpenAI / ChatGPT integration (needs curl and OPENAI_API_KEY)
-"
+if has('python3')
+  Plug 'madox2/vim-ai'                    " OpenAI / ChatGPT integration (needs curl and OPENAI_API_KEY)
+endif
 
 "---Coding Plugins---
 Plug 'FooSoft/vim-argwrap'              " spread_condense_arrays (L-1)
