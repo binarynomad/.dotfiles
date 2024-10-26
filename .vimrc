@@ -161,10 +161,15 @@ endif
 
 " ALE : Code linter and fixer system
 let b:ale_linters = {
-      \  'python': ['ruff']}
+      \  'python': ['ruff'],
+\}
 let g:ale_fixers = {
       \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \  'json': ['prettier'],
+      \  'markdown': ['prettier'],
       \  'python': ['ruff_format', 'isort'],
+      \  'sql': ['sqlfluff'],
+      \  'yaml': ['prettier'],
 \}
 nnoremap <leader>cf :ALEFix<CR>
 
