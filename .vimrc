@@ -3,7 +3,7 @@
 " ----------------------------------------
 " vim --clean (to run default vim)
 
-" ---- CONFIGS: VIM Environment ---- {{{1
+" ---- CONFIGS: VIM Keymaps & Folders ---- {{{1
 
 " ---System Keyboard Mappings--- {{{2
 
@@ -73,12 +73,13 @@ noremap <silent> ? :nohlsearch<CR>
 
 " Map buffer commands/keys
 nnoremap <Leader>bb :bNext<CR>
-nnoremap <Leader>dd :bdelete<CR>
-nnoremap <Leader>nn :enew<CR>
+nnoremap <Leader>bC :%bd<CR>
+nnoremap <Leader>bd :bdelete<CR>
+nnoremap <Leader>bn :enew<CR>
 nnoremap <Leader>xx :q!<CR>
 
 " Map shortcut for quick folding/unfolding
-nnoremap <Leader><space> za
+nnoremap <Leader><space> zA
 
 " Map shortcut for spell checking (use s[ and z=)
 nnoremap <Leader>sc :set spell spelllang=en_us<CR>
@@ -131,15 +132,15 @@ endif
 set backupskip=/tmp/*,/private/tmp/*
 
 
-" ---- CONFIGS: App/Plugin Specific ---- {{{1
+" ---- CONFIGS: Plugin Keymaps & Settings ---- {{{1
 
 " AI : OpenAI / ChatGPT keybindings
 " make sure your env has OPENAI_API_KEY
 " complete text on the current line or in visual selection
-nnoremap <leader>ai :AI<CR>
-xnoremap <leader>ai :AI<CR>
-nnoremap <leader>aI :AI
-xnoremap <leader>aI :AI
+nnoremap <leader>ai :AI
+xnoremap <leader>ai :AI
+xnoremap <leader>aI :AI<CR>
+nnoremap <leader>aI :AI<CR>
 " edit text with a custom prompt
 xnoremap <leader>ae :AIEdit
 nnoremap <leader>ae :AIEdit
@@ -157,6 +158,17 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 if has('macunix')  " use powerline fonts if launched from iTerm
   let g:airline_powerline_fonts = 1
 endif
+
+" ALE : Code linter and fixer system
+let g:ale_fix_on_save = 1
+let b:ale_linters = {
+      \  'python': ['ruff']}
+let g:ale_fixers = {
+      \  '*': ['remove_trailing lines', 'trim_whitespace'],
+      \  'python': ['ruff_format', 'isort'],
+\}
+
+
 
 " ARGWRAP : Reformats Python lists between one to multiline (L-1)
 nnoremap <silent> <leader>1 :ArgWrap<CR>
@@ -177,14 +189,17 @@ map  N <Plug>(easymotion-prev)
 
 " FZF FINDER : Fuzzy searching of files, buffers, history, etc. (L-f?)
 " (recommended installs: Rg, bat)
+" Initialize configuration dictionary
+let g:fzf_vim = {}
+" let g:fzf_vim.preview_window = ['right,50%,<70(up,40%)', 'ctrl-/']
+let g:fzf_vim.preview_window = ['right,50%', 'ctrl-/']
 set rtp+=/opt/homebrew/opt/fzf
 nmap <Leader>fH :Helptags<CR>
 nmap <Leader>fb :Buffers<CR>
 nmap <Leader>fc :Commands<CR>
 nmap <Leader>fC :Colors<CR>
 nmap <Leader>ff :Files<CR>
-nmap <Leader>fg :GFiles<CR>
-nmap <Leader>fG :GFiles?<CR>
+nmap <Leader>fg :GFiles?<CR>
 nmap <Leader>fh :History<CR>
 nmap <Leader>fl :Lines<CR>
 nmap <Leader>fL :BLines<CR>
@@ -193,6 +208,10 @@ nmap <Leader>fM :Maps<CR>
 nmap <Leader>fr :Rg<Space>
 nmap <Leader>fs :Snippets<CR>
 nmap <Leader>fT :Filetypes<CR>
+
+" GITGUTTER : Navigation & Shows changes in git managed files (]c,]h)
+nnoremap <Leader>gd :GitGutterLineHighlightsToggle<CR>
+nnoremap <Leader>gD :GitGutterDiffOrig<CR>
 
 " GOYO / LIMELIGHT : Distraction free and focused writing (L-gy)
 autocmd! User GoyoEnter Limelight
@@ -214,6 +233,7 @@ let g:vim_markdown_folding_style_pythonic = 1
 
 " MARKED : Activate MacOS Marked2 with (L-md)
 nnoremap <Leader>md :MarkedOpen!<CR>
+let g:marked_auto_quit = 1
 
 " NERDTREE : Directory tree and explorer (L-ft)
 " Custom open command that will toggle, and open at file in buffer
@@ -240,7 +260,7 @@ nnoremap <Leader>st :SearchTasks %<CR>
 let g:snipMate = { 'snippet_version' : 1 }
 
 " UNDOTREE : program to visualize/switch unto changes (L-uu)
-nnoremap <Leader>uu :UndotreeToggle<cr>
+nnoremap <Leader>uu :UndotreeToggle<CR>
 
 " WHICHKEY : Activate to see what is mapped to Leader (L)
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
@@ -312,6 +332,8 @@ set nostartofline  " Don’t reset cursor to start of line when moving around.
 set pastetoggle=<F12>  " Setup Paste Toggle to have clean pasted code
 set secure  " Disable unsafe commands in per-directory .vimrc files
 set shortmess=atI  " Don’t show the intro message when starting Vim
+set ssop-=folds " do not store folds in a session
+set ssop-=options " do not store global and local values in a session
 set ttyfast  " Optimize for fast terminal connections
 set undolevels=100  " Increase scope of undo
 set wildmenu " Display all matches when we tab compliete, (:find)
@@ -333,11 +355,14 @@ call plug#begin('~/.vim/plugged')
 "---TESTING Plugins---
 
 Plug 'chrisbra/csv.vim'                 " plugin to edit CSV files (2021-07-29)
+
 " Plug 'gergap/vim-ollama'                " plugin to utilize a local ollama install for AI work
+" Plug 'tpope/vim-markdown'               " markdown syntax and list management
+" Plug 'vim-syntastic/syntastic'          " syntax checker using exteral prog (flake8, pylint, pyflakes)
 
 "---General Env Plugins---
 Plug 'djoshea/vim-autoread'             " reload_file: keeps file updated
-Plug 'dkarter/bullets.vim'              " autoincement bullet lists
+Plug 'dkarter/bullets.vim'              " autoincement bullet lists (gN)
 Plug 'easymotion/vim-easymotion'        " jump_to_spot`: s, /
 Plug 'ervandew/supertab'                " tab_autocomplete
 Plug 'gilsondev/searchtasks.vim'        " tasklist_summary; SearchTasks
@@ -362,7 +387,6 @@ Plug 'wellle/targets.vim'               " smart selection between ([{<\"''\"}])
 "---Markdown Plugins---
 Plug 'itspriddle/vim-marked'            " launch MacOS Marked2.app
 Plug 'masukomi/vim-markdown-folding'    " markdown_header_folding
-Plug 'tpope/vim-markdown'               " markdown syntax and list management
 
 "---AI Plugins---
 if has('python3')
@@ -372,6 +396,7 @@ endif
 "---Coding Plugins---
 Plug 'FooSoft/vim-argwrap'              " spread_condense_arrays (L-1)
 Plug 'airblade/vim-gitgutter'           " git: shows git diff in the gutter
+Plug 'dense-analysis/ale'               " language syntax checker, depends on engines (ruff, )
 Plug 'honza/vim-snippets'               " snippet_groups
 Plug 'nathanaelkane/vim-indent-guides'  " indentation levels shown with columns
 Plug 'tpope/vim-commentary'             " comment out using vim motions/objects
@@ -380,7 +405,6 @@ Plug 'tpope/vim-repeat'                 " global_repeat_actions
 Plug 'tpope/vim-surround'               " enclose_txt: S',cs,ds,ys,yss,VS
 Plug 'vim-airline/vim-airline'          " status_line
 Plug 'vim-airline/vim-airline-themes'   " status_line_themes
-Plug 'vim-syntastic/syntastic'          " syntax checker using exteral prog (flake8, pylint, pyflakes)
 
 "---Python Plugins---
 Plug 'bitc/vim-bad-whitespace'          " highlight_spaces
@@ -404,6 +428,9 @@ Plug 'ghifarit53/tokyonight-vim', { 'as': 'tokyonight' } " color_scheme
 Plug 'nanotech/jellybeans.vim'          " color_scheme
 Plug 'sonph/onehalf', {'rtp': 'vim/'}   " color_scheme
 Plug 'tomasr/molokai'                   " color_scheme
+
+"---MUST BE LOADED LAST---
+Plug 'ryanoasis/vim-devicons'           " custom icons for files & folders
 
 call plug#end()
 
@@ -642,6 +669,7 @@ let my_vim_cheatsheet=[
       \"cs'(    - N: change surrounding item/brackets/tags",
       \"ds(     - N: delete surrounding item/brackets",
       \"e       - N: move to end of word",
+      \"g&      - N: run last search & replace on entire buffer",
       \"gU      - V: change to upper case",
       \"gUU     - N: change line to upper case",
       \"ga      - V: EasyAlign",
@@ -649,6 +677,7 @@ let my_vim_cheatsheet=[
       \"gcc     - I: comment out line",
       \"gf      - N: open FILE in path",
       \"ggg?G   - N: ROT13 entire file",
+      \"gN      - N: renumber lists for selected text",
       \"gu      - V: change to lower case",
       \"guu     - N: change line to lower case",
       \"gv      - N: re-select last selection",
@@ -693,7 +722,9 @@ let my_vim_cheatsheet=[
       \"",
       \"F2      - toggle relative line numbers",
       \"bb      - buffer next",
-      \"dd      - buffer delete",
+      \"bn      - buffer new",
+      \"bd      - buffer delete",
+      \"bC      - buffer close all",
       \"fb      - Fzf find buffers",
       \"fc      - Fzf find commands",
       \"ff      - FzF find file",
@@ -704,6 +735,7 @@ let my_vim_cheatsheet=[
       \"gy      - focused mode",
       \"hh      - open help (cheatsheet)",
       \"ig      - indent guide toggle",
+      \"mc      - enclose in markdown code block",
       \"md      - open file in Marked2 (markdown)",
       \"rf      - reflow paragraph",
       \"ss      - strip trailing whitespace",
@@ -716,10 +748,12 @@ let my_vim_cheatsheet=[
       \"wv      - window new vertical",
       \"ww      - cycle through windows",
       \"xx      - quit nosave",
+      \"x       - mark checbox",
       \"",
       \"---- SYSTEM COMMANDS ----",
       \"",
       \":%s/old/new/g              - search and replace (global)",
+      \":s/old/new/g               - search and replace (selection)",
       \":set ff=dos                - set filetype to DOS",
       \":set ff=unix               - set filetype to UNIX",
       \":set list                  - show hidden characters",
@@ -729,13 +763,17 @@ let my_vim_cheatsheet=[
       \"",
       \":!cmd                       - pipe through command (. % V)",
       \":.!sh                       - run the current line in the shell",
+      \":DiffSaved                  - vertical diff between buffer and file",
       \":EasyAlign 2 /-/            - align on 2nd custom delimiter",
       \":Gvdiffsplit HEAD~1         - git diff recent commit with previous",
+      \":RenumberSelection          - renumber lists for selected text",
+      \":mks filename               - make session wiht filename (load with source",
       \":reg                        - list contents of registers",
       \"<C>[hjkl]                   - window direction navigation",
+      \"F12                         - toggle code paste mode",
       \"F2                          - toggle line numbers & special chars",
-      \"[VB]A<ESC>                  - insert at end of line (APPEND)",
-      \"[VB]I<ESC>                  - insert at cursor",
+      \"[VB]A<ESC>                  - multiline insert at end of line (APPEND)",
+      \"[VB]I<ESC>                  - multiline insert at cursor",
       \"[search]cgn[new].           - selective replace search term with new item",
       \"vim scp://name@host/path    - edit remote file(s)",
       \"",
@@ -752,6 +790,7 @@ let my_vim_cheatsheet=[
       \"",
       \"---- USEFUL URLS ----",
       \"",
+      \"https://learnvim.irian.to/                                          - Learn vim",
       \"https://www.youtube.com/watch?v=wlR5gYd6um0                         - Mastering The Vim Language",
       \"https://www.youtube.com/watch?v=aHm36-na4-4                         - More Instantly Better Vim",
       \"https://realpython.com/vim-and-python-a-match-made-in-heaven/       - RealPython: Vim and Python",
