@@ -160,13 +160,13 @@ if has('macunix')  " use powerline fonts if launched from iTerm
 endif
 
 " ALE : Code linter and fixer system
-let g:ale_fix_on_save = 1
 let b:ale_linters = {
       \  'python': ['ruff']}
 let g:ale_fixers = {
-      \  '*': ['remove_trailing lines', 'trim_whitespace'],
+      \  '*': ['remove_trailing_lines', 'trim_whitespace'],
       \  'python': ['ruff_format', 'isort'],
 \}
+nnoremap <leader>cf :ALEFix<CR>
 
 
 
@@ -355,10 +355,9 @@ call plug#begin('~/.vim/plugged')
 "---TESTING Plugins---
 
 Plug 'chrisbra/csv.vim'                 " plugin to edit CSV files (2021-07-29)
+" Plug 'sheerun/vim-polyglot'             " great syntax package (?needed)
 
 " Plug 'gergap/vim-ollama'                " plugin to utilize a local ollama install for AI work
-" Plug 'tpope/vim-markdown'               " markdown syntax and list management
-" Plug 'vim-syntastic/syntastic'          " syntax checker using exteral prog (flake8, pylint, pyflakes)
 
 "---General Env Plugins---
 Plug 'djoshea/vim-autoread'             " reload_file: keeps file updated
@@ -582,11 +581,13 @@ let vim_settings=[
 \ 'set foldmethod=marker       " set for editing the .vimrc file'
 \]"
 if !filereadable($VIMHOME."/after/ftplugin/vim.vim")
-    call writefile(markdown_settings, $VIMHOME."/after/ftplugin/vim.vim")
+    call writefile(vim_settings, $VIMHOME."/after/ftplugin/vim.vim")
 endif
+
 "---Python Settings--- {{{2
 let python_settings=[
 \ 'autocmd BufWritePre *.py :%s/\s\+$//e   " strip whitespace on save',
+\ 'let g:ale_fix_on_save = 1   " allow ALE to autofix file on save',
 \ 'let python_highlight_all=1  " enable all syntax highlighting features',
 \ 'set colorcolumn=80          " show line length marker',
 \ 'set fileformat=unix         " avoid conversion issues with github',
