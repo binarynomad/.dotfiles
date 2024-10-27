@@ -160,6 +160,7 @@ if has('macunix')  " use powerline fonts if launched from iTerm
 endif
 
 " ALE : Code linter and fixer system
+" for LSP servers look here https://langserver.org/
 let b:ale_linters = {
       \  'python': ['ruff'],
 \}
@@ -361,7 +362,6 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'chrisbra/csv.vim'                 " plugin to edit CSV files (2021-07-29)
 " Plug 'sheerun/vim-polyglot'             " great syntax package (?needed)
-
 " Plug 'gergap/vim-ollama'                " plugin to utilize a local ollama install for AI work
 
 "---General Env Plugins---
@@ -401,7 +401,7 @@ endif
 Plug 'FooSoft/vim-argwrap'              " spread_condense_arrays (L-1)
 Plug 'airblade/vim-gitgutter'           " git: shows git diff in the gutter
 Plug 'dense-analysis/ale'               " language syntax checker, depends on engines (ruff, )
-Plug 'honza/vim-snippets'               " snippet_groups
+Plug 'honza/vim-snippets'               " contains snippets in snippets/UltiSnips format for various languages
 Plug 'nathanaelkane/vim-indent-guides'  " indentation levels shown with columns
 Plug 'tpope/vim-commentary'             " comment out using vim motions/objects
 Plug 'tpope/vim-fugitive'               " git_cmds: run with :Git $cmd
@@ -480,10 +480,11 @@ let g:rehash256 = 1  " bring the 256 color version as close as possible
 
 " ---- ABBREVIATIONS: Mini-Snippets ---- {{{1
 
-iab absetuppy #!/usr/bin/env python3
-iab absetupbash #!/usr/bin/env bash
-iab ablline # ----------------------------------------------------------------------------
+iab abpy #!/usr/bin/env python3
+iab abbash #!/usr/bin/env bash
 iab abline # -------------------------------------
+" TODO: iab abdt <ESC>:r!date
+iab ablongline # ----------------------------------------------------------------------------
 
 " ---- FUNCTIONS: User Functions ---- {{{1
 
@@ -583,6 +584,7 @@ if !isdirectory($VIMHOME."/after/ftplugin")
 
 "---Vim Settings--- {{{2
 let vim_settings=[
+\ 'set colorcolumn=80          " show line length marker',
 \ 'set foldmethod=marker       " set for editing the .vimrc file'
 \]"
 if !filereadable($VIMHOME."/after/ftplugin/vim.vim")
@@ -651,11 +653,13 @@ let my_vim_cheatsheet=[
       \"\"a..z   - N: reference a register a..zA..Z0..9",
       \"'a..z   - N: jump to mark in buffer",
       \"50%     - N: jump to % of file",
+      \"<C>]    - N: jump to tag source",
       \"<C>a    - N: increment number at cursor",
       \"<C>d    - C: show all options for command",
       \"<C>f    - C: edit command mode line",
       \"<C>n    - I: completion window",
       \"<C>r    - N: redo",
+      \"<C>t    - N: jump back to tag",
       \"<C>v    - N: visual block mode",
       \"<C>x    - N: decrement number at cursor",
       \"=z      - N: suggest spelling",
