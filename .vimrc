@@ -193,6 +193,9 @@ omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
+" FUGITIVE : Git commands built into VIM
+nnoremap <Leader>gg :G<CR>
+
 " FZF FINDER : Fuzzy searching of files, buffers, history, etc. (L-f?)
 " (recommended installs: Rg, bat)
 " Initialize configuration dictionary
