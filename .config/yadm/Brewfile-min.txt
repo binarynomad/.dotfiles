@@ -1,0 +1,66 @@
+# Brewfile: Minimal Install
+
+# TAPS
+tap "cirruslabs/cli"
+tap "homebrew/bundle"
+tap "saulpw/vd"
+
+# BREWS
+brew "bat"
+brew "bottom"
+brew "btop"
+brew "dockutil"
+brew "fd"
+brew "fzf"
+brew "gh"
+brew "git"
+brew "glances"
+brew "ipcalc"
+brew "iperf"
+brew "iperf3"
+brew "jq"
+brew "llm"
+brew "mas"
+brew "mtr"
+brew "ncdu"
+brew "neovim"
+brew "nmap"
+brew "pygments"
+brew "ripgrep"
+brew "rsync"
+brew "saulpw/vd/visidata"
+brew "speedtest-cli"
+brew "tldr"
+brew "tmux"
+brew "tree"
+brew "vim"
+brew "watch"
+brew "yadm"
+brew "yq"
+
+# CASKS
+cask "1password"
+cask "1password-cli"
+cask "alfred"
+cask "apparency"
+cask "drawio"
+cask "dropbox"
+cask "font-hack-nerd-font""
+cask "font-sauce-code-pro-nerd-font"
+cask "google-chrome"
+cask "google-drive"
+cask "iterm2"
+cask "ollama"
+cask "setapp"
+cask "slack"
+cask "suspicious-package"
+cask "textexpander"
+cask "visual-studio-code"
+cask "zoom"
+
+# MAS
+mas "1Password for Safari", id: 1569813296
+mas "Amphetamine", id: 937984704
+mas "Moom", id: 419330170
+mas "Remote Desktop", id: 409907375
+mas "Tailscale", id: 1475387142
