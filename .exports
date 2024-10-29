@@ -43,7 +43,21 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # FZF: Setup default display options and keybindings
-export FZF_DEFAULT_OPTS="--no-mouse --height 80% -1 --reverse --multi --inline-info --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -300' --preview-window='right:hidden' --bind='f3:execute(bat --style=numbers {} || less -f {}),f2:toggle-preview,ctrl-d:half-page-down,ctrl-u:half-page-up,ctrl-a:select-all+accept,ctrl-y:execute-silent(echo {+} | pbcopy),ctrl-x:execute(rm -i {+})+abort,ctrl-s:jump,ctrl-space:toggle'"
+export FZF_DEFAULT_OPTS="
+  --no-mouse                      # Disable mouse support
+  --height 80%                    # Set FZF window height to 80% of the terminal
+  -1                              # Don't show a preview window when there's only one match
+  --multi                         # Enable multi-select mode
+  --inline-info                   # Show the number of items matching and not matching inline
+
+  --preview='[[ \$(file --mime {}) =~ binary ]] && \
+    echo {} is a binary file || \
+    (bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -300' # Preview logic to show file content or indicate binary
+
+  --preview-window='right' # Position preview to the right and hide initially
+
+  --bind='f2:toggle-preview'
+"
 
 # FD: defaut options
  export FD_OPTIONS="--exclude '~/Library/*'"
