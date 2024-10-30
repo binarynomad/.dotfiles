@@ -81,7 +81,7 @@ nnoremap <Leader>xx :q!<CR>
 " Map shortcut for quick folding/unfolding
 nnoremap <Leader><space> zA
 
-" Map shortcut for spell checking (use s[ and z=)
+" Map shortcut for spell checking (use s[, z=, zg)
 nnoremap <Leader>sc :set spell spelllang=en_us<CR>
 nnoremap <Leader>sp :normal! mz[s1z=`z<CR>
 
@@ -683,14 +683,15 @@ let my_vim_cheatsheet=[
       \"ds(     - N: delete surrounding item/brackets",
       \"e       - N: move to end of word",
       \"g&      - N: run last search & replace on entire buffer",
+      \"gN      - N: renumber lists for selected text",
       \"gU      - V: change to upper case",
       \"gUU     - N: change line to upper case",
       \"ga      - V: EasyAlign",
       \"gc      - V: comment out selection",
       \"gcc     - I: comment out line",
+      \"gd      - N: goto definition/function named under cursor",
       \"gf      - N: open FILE in path",
       \"ggg?G   - N: ROT13 entire file",
-      \"gN      - N: renumber lists for selected text",
       \"gu      - V: change to lower case",
       \"guu     - N: change line to lower case",
       \"gv      - N: re-select last selection",
@@ -705,6 +706,7 @@ let my_vim_cheatsheet=[
       \"xp      - N: swap characters",
       \"ys[]B   - I: quick surround with curly brackets {}",
       \"ys[]b   - I: quick surround with brackets ()",
+      \"zg      - N: add word to spelling dictionary",
       \"zM      - N: fold all",
       \"zR      - N: unfold all",
       \"~       - V: invert case",
