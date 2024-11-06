@@ -19,6 +19,9 @@ let maplocalleader=","
 " Map <leader>-; as alternative for : to make it easier
 nnoremap <Leader>; :
 
+" Map <leader>-<TAB> to allow tabbing between buffers
+nnoremap <Leader><TAB> :bnext<CR>
+
 " Move macro recording to Q instead of q
 nnoremap Q q
 nnoremap q <Nop>
@@ -72,10 +75,11 @@ nmap <Leader>rf gqap
 noremap <silent> ? :nohlsearch<CR>
 
 " Map buffer commands/keys
-nnoremap <Leader>bb :bNext<CR>
+nnoremap <Leader>bb :bnext<CR>
 nnoremap <Leader>bC :%bd<CR>
 nnoremap <Leader>bd :bdelete<CR>
 nnoremap <Leader>bn :enew<CR>
+nnoremap <Leader>dd :bdelete<CR>
 nnoremap <Leader>xx :q!<CR>
 
 " Map shortcut for quick folding/unfolding
@@ -199,9 +203,9 @@ nnoremap <Leader>gg :G<CR>
 " FZF FINDER : Fuzzy searching of files, buffers, history, etc. (L-f?)
 " (recommended installs: Rg, bat)
 " Initialize configuration dictionary
-let g:fzf_vim = {}
+" let g:fzf_vim = {}
 " let g:fzf_vim.preview_window = ['right,50%,<70(up,40%)', 'ctrl-/']
-let g:fzf_vim.preview_window = ['right,50%', 'ctrl-/']
+" let g:fzf_vim.preview_window = ['right,50%', 'ctrl-/']
 set rtp+=/opt/homebrew/opt/fzf
 nmap <Leader>fH :Helptags<CR>
 nmap <Leader>fb :Buffers<CR>
@@ -731,6 +735,16 @@ let my_vim_cheatsheet=[
       \"[]t     - tags",
       \"[]w     - word",
       \"[]{     - brackets",
+      \"",
+      \"",
+      \"---- GIT / FUGITIVE COMMANDS ----",
+      \"",
+      \"-       - GIT TOGGLE stage file",
+      \"=       - GIT diff file",
+      \"cc      - GIT commit file",
+      \"dv      - GIT diff vsplit file",
+      \"s       - GIT stage file",
+      \"u       - GIT unstage file",
       \"",
       \"",
       \"---- LEADER KEYS (L-) ----",

@@ -44,11 +44,12 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # FZF: Setup default display options and keybindings
 export FZF_DEFAULT_OPTS="
-  --no-mouse                      # Disable mouse support
   --height 80%                    # Set FZF window height to 80% of the terminal
-  -1                              # Don't show a preview window when there's only one match
-  --multi                         # Enable multi-select mode
   --inline-info                   # Show the number of items matching and not matching inline
+  --multi                         # Enable multi-select mode
+  --no-mouse                      # Disable mouse support
+  #--reverse                       # Switch input to top of window
+  -1                              # Don't show a preview window when there's only one match
 
   --preview='[[ \$(file --mime {}) =~ binary ]] && \
     echo {} is a binary file || \
