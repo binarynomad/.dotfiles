@@ -70,7 +70,7 @@ alias scan='sudo nmap -sS -O'
 alias iperft='iperf -c iperf.he.net'
 alias iperfu='iperf -c iperf.he.net -u'
 
-# NET: Notify Pushover 
+# NET: Notify Pushover
 alias notify='curl -SsL http://oitd.link/notify'
 
 # WEB: URL-encode strings
