@@ -108,6 +108,12 @@ tmap <Leader>t <c-w>:term ++close<cr>
 map <Leader>T :tab term ++close<cr>
 tmap <Leader>T <c-w>:tab term ++close<cr>
 
+" VimGrep Customization
+let &grepprg="grep -HRIn $* ."
+nnoremap <leader>gr :copen \| :silent :grep 
+nnoremap [q :cprev<CR>
+nnoremap ]q :cnext<CR>
+
 " ---File Directory Setup--- {{{2
 
 " Identify where the configs & plugins will go
@@ -153,7 +159,8 @@ xnoremap <leader>as :AIEdit fix grammar and spelling<CR>
 nnoremap <leader>as :AIEdit fix grammar and spelling<CR>
 " trigger chat
 xnoremap <leader>ac :AIChat<CR>
-nnoremap <leader>ac :AIChat<CR>"
+" nnoremap <leader>ac :AIChat<CR>"
+nnoremap <leader>ac :AIChat<CR>
 
 " AIRLINE : Advanced status bar on the bottom
 let g:airline#extensions#tabline#enabled = 1
@@ -318,14 +325,15 @@ set foldmethod=marker  " [manual, marker, indent, syntax]
 set foldnestmax=10  " 10 nexted folds maximum
 
 "---Search Settings---
+set gdefault  " Add the g flag to search/replace by default
 set hlsearch  " Highlight searches
 set ignorecase  " Ignore case of searches
 set incsearch  " Highlight dynamically as pattern is typed
 set lazyredraw  " Don't redraw during macros for better response (N)
+set path+=**   " Fuzzy search into folders, tab-completion (without plugin)
 set showcmd  " Show the (partial) command as it’s being typed
 set showmode  " Show the current mode
 set smartcase  " Make search case sensitive if there is uppercase char
-set path+=**   " Fuzzy search into folders, tab-completion (without plugin)
 
 "---Misc Settings---
 set backspace=indent,eol,start  " Allow backspace in insert mode
@@ -333,7 +341,6 @@ set clipboard^=unnamed,unnamedplus  " Use the OS clipboard (vim compiled w/ `+cl
 set encoding=utf-8 nobomb  " Use UTF-8 without BOM
 set esckeys  " Allow cursor keys in insert mode
 set exrc  " Enable per-directory .vimrc files
-set gdefault  " Add the g flag to search/replace by default
 set hidden  " Set HIDDEN so you can jump between buffers
 set history=100  " Increase scope of history
 set mouse=a  " Enable mouse in all modes
@@ -657,7 +664,8 @@ let my_vim_cheatsheet=[
       \"---- CHEATSHEET UPDATED (2024-10-24) ----",
       \"---- BASICS ----",
       \"",
-      \"\"a..z   - N: reference a register a..zA..Z0..9",
+      \"\"=     - N: register for math calculation",
+      \"\"a..z  - N: reference a register a..zA..Z0..9",
       \"'a..z   - N: jump to mark in buffer",
       \"50%     - N: jump to % of file",
       \"<C>]    - N: jump to tag source",
@@ -666,6 +674,7 @@ let my_vim_cheatsheet=[
       \"<C>f    - C: edit command mode line",
       \"<C>n    - I: completion window",
       \"<C>r    - N: redo",
+      \"<C>r a  - I: paste register a",
       \"<C>t    - N: jump back to tag",
       \"<C>v    - N: visual block mode",
       \"<C>x    - N: decrement number at cursor",
@@ -795,6 +804,7 @@ let my_vim_cheatsheet=[
       \":DiffSaved                  - vertical diff between buffer and file",
       \":EasyAlign 2 /-/            - align on 2nd custom delimiter",
       \":Gvdiffsplit HEAD~1         - git diff recent commit with previous",
+      \":let @a='C-r C-r a          - edit and replace macro",
       \":RenumberSelection          - renumber lists for selected text",
       \":mks filename               - make session wiht filename (load with source",
       \":reg                        - list contents of registers",
@@ -827,5 +837,4 @@ let my_vim_cheatsheet=[
 \]"
 
 "---- TESTING AREA: Trying out new options/functions ---- {{{1
-"
 "
