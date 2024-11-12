@@ -662,8 +662,7 @@ endfunction
 noremap <leader>hh :call ShowCheatSheet(my_vim_cheatsheet)<CR>
 
 let my_vim_cheatsheet=[
-      \"---- CHEATSHEET UPDATED (2024-10-24) ----",
-      \"---- BASICS ----",
+      \"---- CHEATSHEET BASICS ----",
       \"",
       \"\"=     - N: register for math calculation",
       \"\"a..z  - N: reference a register a..zA..Z0..9",
