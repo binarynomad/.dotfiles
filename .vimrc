@@ -316,6 +316,7 @@ set showtabline=2  " Show the TABLINE
 set splitbelow  " Default vertical splits to below
 set splitright  " Default horizontal splits to the right
 set title  " Show the filename in the window titlebar
+set guifont=Hack\ Nerd\ Font:h13  " Default font used by gvim or macvim
 
 "---Folding Settings---
 set nofoldenable  " disable folding by default on file open
@@ -795,6 +796,7 @@ let my_vim_cheatsheet=[
       \"---- SYSTEM COMMANDS ----",
       \"",
       \":%s/old/new/g              - search and replace (global)",
+      \":s/old/new/c               - search and replace (confirm)",
       \":s/old/new/g               - search and replace (selection)",
       \":set ff=dos                - set filetype to DOS",
       \":set ff=unix               - set filetype to UNIX",
