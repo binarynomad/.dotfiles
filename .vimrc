@@ -14,7 +14,7 @@ inoremap kj <ESC>
 " Map <space> as the <leader> key
 nnoremap <Space> <Nop>
 let mapleader=" "
-let maplocalleader=","
+"let maplocalleader=","
 
 " Map <leader>-; as alternative for : to make it easier
 nnoremap <Leader>; :
@@ -102,17 +102,20 @@ noremap <leader>W :w !sudo tee % > /dev/null<CR>
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " vim-powered terminal in split window
-map <Leader>t :term ++close<cr>
-tmap <Leader>t <c-w>:term ++close<cr>
+map <Leader>tt :term ++close<cr>
+tmap <Leader>tt <c-w>:term ++close<cr>
 " vim-powered terminal in new tab
-map <Leader>T :tab term ++close<cr>
-tmap <Leader>T <c-w>:tab term ++close<cr>
+map <Leader>TT :tab term ++close<cr>
+tmap <Leader>TT <c-w>:tab term ++close<cr>
 
 " VimGrep Customization
 let &grepprg="grep -HRIn $* ."
 nnoremap <leader>gr :copen \| :silent :grep 
 nnoremap [q :cprev<CR>
 nnoremap ]q :cnext<CR>
+
+" Map to paste a blank line below
+nnoremap <Leader>o :put_<CR>
 
 " ---File Directory Setup--- {{{2
 
