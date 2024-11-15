@@ -22,9 +22,9 @@ brew "docker"
 brew "dockutil"
 brew "doctl"
 brew "fd"
-brew "harfbuzz"
 brew "fzf"
 brew "gh"
+brew "harfbuzz"
 brew "git"
 brew "glances"
 brew "gping"
@@ -46,8 +46,6 @@ brew "node"
 brew "marked"
 brew "mas"
 brew "mpc"
-brew "yt-dlp"
-brew "mpv"
 brew "mtr"
 brew "ncdu"
 brew "ngrep"
@@ -143,36 +141,6 @@ cask "webpquicklook"
 cask "wifiman"
 cask "windows-app"
 cask "zoom"
-mas "1Password for Safari", id: 1569813296
-mas "Agenda", id: 1287445660
-mas "Amphetamine", id: 937984704
-mas "Apple Configurator", id: 1037126344
-mas "ColorSlurp", id: 1287239339
-mas "Comic Life", id: 688953417
-mas "DaisyDisk", id: 411643860
-mas "Discovery", id: 1381004916
-mas "Disk Speed Test", id: 425264550
-mas "Exporter", id: 1099120373
-mas "Fantastical", id: 975937182
-mas "FiveNotes", id: 1231597027
-mas "GarageBand", id: 682658836
-mas "Gemini", id: 463541543
-mas "Goodnotes", id: 1444383602
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
-mas "MindNode", id: 1289197285
-mas "Moom Classic", id: 419330170
-mas "Notability", id: 360593530
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Remote Desktop", id: 409907375
-mas "Serial", id: 877615577
-mas "Soulver 3", id: 1508732804
-mas "Strip Design", id: 314780738
-mas "Tailscale", id: 1475387142
-mas "WiFi Explorer", id: 494803304
-mas "WiFi Signal", id: 525912054
-mas "WireGuard", id: 1451685025
 vscode "continue.continue"
 vscode "davidanson.vscode-markdownlint"
 vscode "dnicolson.binary-plist"

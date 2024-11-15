@@ -10,5 +10,5 @@ This is a list of preferred apps installed using SetApp.app
 
 * iTermAI
 * qFlipper
-* textsoap
-* Ubiquiti WifiMan
+* TextSoap
+* Ubiquiti WiFiman
