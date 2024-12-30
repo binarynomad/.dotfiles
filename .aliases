@@ -1,6 +1,9 @@
 # ALIASES for the shell
 # Note: Add local specific entries in the (~/.xxx-local) file (see bottom)
 
+# Custom LS switches
+alias ls='ls -Gp '
+
 # Quick edit of my env files
 alias exports='vim ~/.exports*'
 alias aliases='vim ~/.aliases*'
