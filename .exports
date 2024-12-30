@@ -39,9 +39,6 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 [ -f /opt/homebrew/bin/fd ] && export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude /Library'
 [ -f ${HOME}/bin/fd ] && export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude /Library'
 
-# FZF: To apply the command to CTRL-T as well
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
 # FZF: Setup default display options and keybindings
 export FZF_DEFAULT_OPTS="
   --height 80%                    # Set FZF window height to 80% of the terminal
@@ -60,9 +57,14 @@ export FZF_DEFAULT_OPTS="
   --bind='f2:toggle-preview'
 "
 
-# FD: defaut options
- export FD_OPTIONS="--exclude '~/Library/*'"
+# FZF: To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# FZF: Setup
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+# FD: defaut options
+export FD_OPTIONS="--exclude '~/Library/*'"
 
 # ============================
 # !! KEEP TIHS AT THE BOTTOM OF THE FILE.
