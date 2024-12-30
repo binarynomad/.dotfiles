@@ -21,6 +21,7 @@ nnoremap <Leader>; :
 
 " Map <leader>-<TAB> to allow tabbing between buffers
 nnoremap <Leader><TAB> :bnext<CR>
+nnoremap <Leader><S-TAB> :bprev<CR>
 
 " Move macro recording to Q instead of q
 nnoremap Q q
@@ -110,7 +111,7 @@ tmap <Leader>TT <c-w>:tab term ++close<cr>
 
 " VimGrep Customization
 let &grepprg="grep -HRIn $* ."
-nnoremap <leader>gr :copen \| :silent :grep 
+nnoremap <leader>gr :copen \| :silent :grep
 nnoremap [q :cprev<CR>
 nnoremap ]q :cnext<CR>
 
@@ -398,6 +399,7 @@ Plug 'liuchengxu/vim-which-key'         " show some of your mappings live
 Plug 'mbbill/undotree'                  " full undo tracking and diffs
 Plug 'mhinz/vim-startify'               " vim startup splashscreen
 Plug 'scrooloose/nerdtree'              " file_tree: remap <Leader>f<CR>
+Plug 'TaDaa/vimade'                     " window focus fading / highlighting
 
 "---TextObj Plugins---
 Plug 'glts/vim-textobj-comment'         " vic: select all in commented block
@@ -667,8 +669,6 @@ noremap <leader>hh :call ShowCheatSheet(my_vim_cheatsheet)<CR>
 let my_vim_cheatsheet=[
       \"---- CHEATSHEET BASICS ----",
       \"",
-      \"\"=     - N: register for math calculation",
-      \"\"a..z  - N: reference a register a..zA..Z0..9",
       \"'a..z   - N: jump to mark in buffer",
       \"50%     - N: jump to % of file",
       \"<C>]    - N: jump to tag source",
@@ -694,6 +694,9 @@ let my_vim_cheatsheet=[
       \"ZQ      - N: quit without saving",
       \"ZZ      - N: quit with saving",
       \"[#*]    - N: make the word under cursor the search object",
+      \"\"=     - N: register for math calculation",
+      \"\"a..z  - N: reference a register a..zA..Z0..9",
+      \"`.      - N: jump to last change in buffer",
       \"b       - N: move to beginning of word",
       \"cs'(    - N: change surrounding item/brackets/tags",
       \"ds(     - N: delete surrounding item/brackets",
@@ -722,9 +725,9 @@ let my_vim_cheatsheet=[
       \"xp      - N: swap characters",
       \"ys[]B   - I: quick surround with curly brackets {}",
       \"ys[]b   - I: quick surround with brackets ()",
-      \"zg      - N: add word to spelling dictionary",
       \"zM      - N: fold all",
       \"zR      - N: unfold all",
+      \"zg      - N: add word to spelling dictionary",
       \"~       - V: invert case",
       \"",
       \"---- ACTIONS ----",
@@ -829,6 +832,7 @@ let my_vim_cheatsheet=[
       \":%s#<[^>]\+>##g             - strip all HTML tags",
       \":%s/ITEM//gc                - search and replace, asking for each",
       \":%s/ITEM//gn                - search and count instances of ITEM",
+      \":%s/e\([0-9]\)/e_\1/g       - search and keep matches in replacement",
       \":g!/ITEM/d                  - filter out lines without item",
       \":g/ITEM/d                   - filter out lines with item",
       \":g/pattern/y B              - find pattern and put into B register",
@@ -845,4 +849,6 @@ let my_vim_cheatsheet=[
 \]"
 
 "---- TESTING AREA: Trying out new options/functions ---- {{{1
-"
+
+" TODO: this is not working
+let @b=@*  " Backup system clipboard to b register incase user yank/del before paste
