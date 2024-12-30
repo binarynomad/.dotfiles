@@ -4,12 +4,7 @@
 # type of parameters like $PATH, $PROMPT, aliases, and functions you would
 # like to have in both login and interactive shells.
 #
-
-# ENV: Personal settings, aliases, functions, etc.
-[ -f ~/.exports ] && source ~/.exports
-[ -f ~/.functions ] && source ~/.functions
-[ -f ~/.aliases ] && source ~/.aliases
-
+#
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -103,6 +98,11 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# ENV: Personal settings, aliases, functions, etc.
+[ -f ~/.exports ] && source ~/.exports
+[ -f ~/.functions ] && source ~/.functions
+[ -f ~/.aliases ] && source ~/.aliases
 
 # ZSH: Custom Prompt to setup cursor on a newline
 precmd() { print "" }
