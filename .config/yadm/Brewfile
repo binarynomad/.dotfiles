@@ -33,14 +33,15 @@ brew "handbrake"
 brew "howdoi"
 brew "httpie"
 brew "imagemagick"
+brew "instaloader"
 brew "ipcalc"
 brew "iperf"
 brew "iperf3"
 brew "isort"
 brew "jq"
+brew "lazydocker"
 brew "lazygit"
 brew "llm"
-brew "macvim"
 brew "mad"
 brew "node"
 brew "marked"
@@ -57,6 +58,7 @@ brew "pyenv"
 brew "pyenv-virtualenv"
 brew "pygments"
 brew "pytorch"
+brew "qrcp"
 brew "rclone"
 brew "ripgrep"
 brew "rsync"
@@ -80,6 +82,7 @@ brew "wget"
 brew "yadm"
 brew "yarn"
 brew "yq"
+brew "yt-dlp"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 brew "cirruslabs/cli/tart"
@@ -90,7 +93,9 @@ cask "1password-cli"
 cask "a-better-finder-rename"
 cask "alfred"
 cask "apparency"
+cask "arc"
 cask "audacity"
+cask "balenaetcher"
 cask "bartender"
 cask "bruno"
 cask "cleanmymac"
@@ -111,6 +116,7 @@ cask "google-drive"
 cask "handbrake"
 cask "iterm2"
 cask "mactracker"
+cask "macvim"
 cask "name-mangler"
 cask "netspot"
 cask "ollama"
@@ -126,6 +132,7 @@ cask "rar"
 cask "raspberry-pi-imager"
 cask "screenflow"
 cask "setapp"
+cask "shortcat"
 cask "signal"
 cask "slack"
 cask "snowflake-snowsql"
@@ -134,6 +141,7 @@ cask "sublime-text"
 cask "suspicious-package"
 cask "textexpander"
 cask "the-unarchiver"
+cask "upscayl"
 cask "visual-studio-code"
 cask "vlc"
 cask "vmware-fusion"
@@ -141,6 +149,36 @@ cask "webpquicklook"
 cask "wifiman"
 cask "windows-app"
 cask "zoom"
+mas "1Password for Safari", id: 1569813296
+mas "Agenda", id: 1287445660
+mas "Amphetamine", id: 937984704
+mas "Apple Configurator", id: 1037126344
+mas "ColorSlurp", id: 1287239339
+mas "Comic Life", id: 688953417
+mas "DaisyDisk", id: 411643860
+mas "Discovery", id: 1381004916
+mas "Disk Speed Test", id: 425264550
+mas "Exporter", id: 1099120373
+mas "Fantastical", id: 975937182
+mas "FiveNotes", id: 1231597027
+mas "GarageBand", id: 682658836
+mas "Gemini", id: 463541543
+mas "Goodnotes", id: 1444383602
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "MindNode", id: 1289197285
+mas "Moom Classic", id: 419330170
+mas "Notability", id: 360593530
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Remote Desktop", id: 409907375
+mas "Serial", id: 877615577
+mas "Soulver 3", id: 1508732804
+mas "Strip Design", id: 314780738
+mas "Tailscale", id: 1475387142
+mas "WiFi Explorer", id: 494803304
+mas "WiFi Signal", id: 525912054
+mas "WireGuard", id: 1451685025
 vscode "continue.continue"
 vscode "davidanson.vscode-markdownlint"
 vscode "dnicolson.binary-plist"
