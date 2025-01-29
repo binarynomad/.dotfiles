@@ -22,9 +22,16 @@ echo "-------------------------------------------------------"
 # ---------------------------------------------
 
 # Setup some default directories
-for dir in bin tmp dev ; do
-    if [[! -d ${HOME}/$dir ]]; then mkdir ${HOME}/$dir; fi
-    echo "Created ${HOME}/$dir"
+dirs=("bin" "tmp" "dev") # Use an array for better readability
+
+for dir in "${dirs[@]}"; do # Properly iterate array elements
+  dir_path="${HOME}/${dir}" # Construct the full path once
+  if [[ ! -d "$dir_path" ]]; then # Quote the path variable for safety and use a more descriptive if condition
+    mkdir -p "$dir_path" # use -p to make parent directories if they don't exist
+    echo "Created $dir_path"
+  else
+      echo "Directory $dir_path already exists"
+  fi
 done
 
 # ---------------------------------------------
