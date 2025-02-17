@@ -34,6 +34,16 @@ alias sl='subl'
 # Env Tool Specific Aliases
 # ============================
 
+# YADM: Aliaese to make it easer to use the .dotfile manager
+alias y='yadm'
+alias ya='yadm add'
+alias yc='yadm commit -m'
+alias yp='yadm push'
+alias yl='yadm log --oneline --graph --decorate'
+alias yd='yadm diff'
+alias ys='yadm status'
+alias yu='yadm pull --rebase'
+
 # FZF: fzf fuzzy search with preview
 alias fp="fzf --height 40% --layout reverse --info inline --border \
     --preview 'file {}' --preview-window down:1:noborder \
