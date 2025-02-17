@@ -11,6 +11,9 @@
 inoremap jk <ESC>
 inoremap kj <ESC>
 
+" Map ZZ to quit without saving
+:nnoremap ZZ :q!<CR>
+
 " Map <space> as the <leader> key
 nnoremap <Space> <Nop>
 let mapleader=" "
@@ -149,7 +152,7 @@ set backupskip=/tmp/*,/private/tmp/*
 " ---- CONFIGS: Plugin Keymaps & Settings ---- {{{1
 
 " AI : OpenAI / ChatGPT keybindings
-" make sure your env has OPENAI_API_KEY
+" make sure your env has export OPENAI_API_KEY="<YOUR KEY>"
 " complete text on the current line or in visual selection
 nnoremap <leader>ai :AI
 xnoremap <leader>ai :AI
@@ -162,9 +165,9 @@ nnoremap <leader>ae :AIEdit
 xnoremap <leader>as :AIEdit fix grammar and spelling<CR>
 nnoremap <leader>as :AIEdit fix grammar and spelling<CR>
 " trigger chat
-xnoremap <leader>ac :AIChat<CR>
+xnoremap <leader>ac :AIChat /right<CR>
 " nnoremap <leader>ac :AIChat<CR>"
-nnoremap <leader>ac :AIChat<CR>
+nnoremap <leader>ac :AIChat /right<CR>
 
 " AIRLINE : Advanced status bar on the bottom
 let g:airline#extensions#tabline#enabled = 1
@@ -415,6 +418,7 @@ Plug 'masukomi/vim-markdown-folding'    " markdown_header_folding
 "---AI Plugins---
 if has('python3')
   Plug 'madox2/vim-ai'                    " OpenAI / ChatGPT integration (needs curl and OPENAI_API_KEY)
+  if !exists("OPENAI_API_KEY") | let g:vim_ai_token_file_path = "~/.openai.token" | endif
 endif
 
 "---Coding Plugins---
@@ -765,6 +769,9 @@ let my_vim_cheatsheet=[
       \"---- LEADER KEYS (L-) ----",
       \"",
       \"F2      - toggle relative line numbers",
+      \"ai      - AI command",
+      \"ac      - AI chat",
+      \"ae      - AI edit",
       \"bC      - buffer close all",
       \"bb      - buffer next",
       \"bd      - buffer delete",
@@ -852,3 +859,6 @@ let my_vim_cheatsheet=[
 
 " TODO: this is not working
 let @b=@*  " Backup system clipboard to b register incase user yank/del before paste
+
+" TESTING - OPENAI Variable detection
+if !exists("OPENAI_API_KEY") | let g:vim_ai_token_file_path = "~/.openai.token" | endif
