@@ -106,7 +106,8 @@ alias oitd='cd ~/brian@oitd.net\ -\ Google\ Drive/My\ Drive/Clients/'
 alias oitd_old='cd ~/Dropbox/Business/Open-IT-Design'
 
 # OSX: Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; brew bundle dump ; sleep 5 ; mas upgrade'
+alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; brew bundle dump ; sleep 5 ; mas upgrade ; mv Brewfile ~/.config/yadm/'
+
 
 # OSX: Flush Directory Service cache
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"

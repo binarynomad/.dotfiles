@@ -385,6 +385,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'chrisbra/csv.vim'                 " plugin to edit CSV files (2021-07-29)
 " Plug 'sheerun/vim-polyglot'             " great syntax package (?needed)
 " Plug 'gergap/vim-ollama'                " plugin to utilize a local ollama install for AI work
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}    " Vim Visual Multi
 
 "---General Env Plugins---
 Plug 'djoshea/vim-autoread'             " reload_file: keeps file updated
@@ -414,6 +415,7 @@ Plug 'wellle/targets.vim'               " smart selection between ([{<\"''\"}])
 "---Markdown Plugins---
 Plug 'itspriddle/vim-marked'            " launch MacOS Marked2.app
 Plug 'masukomi/vim-markdown-folding'    " markdown_header_folding
+Plug 'dhruvasagar/vim-table-mode'       " markdown table mode
 
 "---AI Plugins---
 if has('python3')
@@ -823,6 +825,7 @@ let my_vim_cheatsheet=[
       \":EasyAlign 2 /-/            - align on 2nd custom delimiter",
       \":Gvdiffsplit HEAD~1         - git diff recent commit with previous",
       \":let @a='C-r C-r a          - edit and replace macro",
+      \":packadd helptoc            - add a Table of Contents for markdown",
       \":RenumberSelection          - renumber lists for selected text",
       \":mks filename               - make session wiht filename (load with source",
       \":reg                        - list contents of registers",

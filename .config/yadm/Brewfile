@@ -3,8 +3,10 @@ tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
 tap "saulpw/vd"
+brew "aircrack-ng"
 brew "xz"
 brew "ansible"
+brew "asitop"
 brew "awscli"
 brew "bat"
 brew "bottom"
@@ -24,7 +26,7 @@ brew "git"
 brew "glances"
 brew "gping"
 brew "graphviz"
-brew "handbrake"
+brew "handbrake", link: false
 brew "httpie"
 brew "imagemagick"
 brew "instaloader"
@@ -68,6 +70,7 @@ brew "tig"
 brew "tldr"
 brew "tmux"
 brew "tree"
+brew "uv"
 brew "watch"
 brew "wget"
 brew "yadm"
@@ -87,6 +90,7 @@ cask "apparency"
 cask "audacity"
 cask "balenaetcher"
 cask "bartender"
+cask "block-goose"
 cask "bruno"
 cask "cleanmymac"
 cask "diffusionbee"
@@ -103,11 +107,16 @@ cask "google-chrome"
 cask "google-cloud-sdk"
 cask "google-drive"
 cask "handbrake"
+cask "hazel"
 cask "iterm2"
+cask "karabiner-elements"
+cask "leader-key"
 cask "mactracker"
 cask "macvim"
+cask "msty"
 cask "name-mangler"
 cask "netspot"
+cask "obsidian"
 cask "ollama"
 cask "podman-desktop"
 cask "qlcolorcode"
@@ -141,10 +150,10 @@ cask "zoom"
 mas "1Password for Safari", id: 1569813296
 mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
+mas "Blackmagic Disk Speed Test", id: 425264550
 mas "ColorSlurp", id: 1287239339
 mas "DaisyDisk", id: 411643860
 mas "Discovery", id: 1381004916
-mas "Disk Speed Test", id: 425264550
 mas "Exporter", id: 1099120373
 mas "Fantastical", id: 975937182
 mas "FiveNotes", id: 1231597027
@@ -157,6 +166,8 @@ mas "MindNode", id: 1289197285
 mas "Moom Classic", id: 419330170
 mas "Notability", id: 360593530
 mas "Numbers", id: 409203825
+mas "Okta Verify", id: 490179405
+mas "openterface", id: 6478481082
 mas "Pages", id: 409201541
 mas "Remote Desktop", id: 409907375
 mas "Serial", id: 877615577
