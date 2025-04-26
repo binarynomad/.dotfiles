@@ -165,9 +165,9 @@ nnoremap <leader>ae :AIEdit
 xnoremap <leader>as :AIEdit fix grammar and spelling<CR>
 nnoremap <leader>as :AIEdit fix grammar and spelling<CR>
 " trigger chat
-xnoremap <leader>ac :AIChat /right<CR>
+xnoremap <leader>ac :AIChat<CR>
 " nnoremap <leader>ac :AIChat<CR>"
-nnoremap <leader>ac :AIChat /right<CR>
+nnoremap <leader>ac :AIChat<CR>
 
 " AIRLINE : Advanced status bar on the bottom
 let g:airline#extensions#tabline#enabled = 1
@@ -809,6 +809,7 @@ let my_vim_cheatsheet=[
       \"",
       \"---- SYSTEM COMMANDS ----",
       \"",
+      \":%s/old/new/               - NOTE: I can omit the '/g' in search and replace (global)",
       \":%s/old/new/g              - search and replace (global)",
       \":s/old/new/c               - search and replace (confirm)",
       \":s/old/new/g               - search and replace (selection)",
