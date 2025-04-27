@@ -12,7 +12,7 @@ inoremap jk <ESC>
 inoremap kj <ESC>
 
 " Map ZZ to quit without saving
-:nnoremap ZZ :q!<CR>
+:nnoremap XX :q!<CR>
 
 " Map <space> as the <leader> key
 nnoremap <Space> <Nop>
@@ -697,7 +697,8 @@ let my_vim_cheatsheet=[
       \"S[({']  - V: surround selection",
       \"U       - N: undo all edits in line",
       \"V       - N: visual line mode",
-      \"ZQ      - N: quit without saving",
+      \"XX      - N: quit without saving (custom)",
+      \"ZQ      - N: quit without saving (default)",
       \"ZZ      - N: quit with saving",
       \"[#*]    - N: make the word under cursor the search object",
       \"\"=     - N: register for math calculation",
