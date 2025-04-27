@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Check if on the proper OS, and skip if not
+export OS_TYPE="$(uname -s)"
+if [[ "$OS_TYPE" != "Darwin" ]]; then echo "Skipping ${0} ..."; exit 0; fi
+echo "Running ${OS_TYPE} Bootstrap... ${0}"
+
 # Define source and destination file paths
 TEMPLATE="/etc/pam.d/sudo_local.template"
 DEST="/etc/pam.d/sudo_local"

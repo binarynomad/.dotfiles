@@ -5,8 +5,8 @@
 
 # Check if on the proper OS, and skip if not
 export OS_TYPE="$(uname -s)"
-if [[ "$OS_TYPE" != "Darwin" ]]; then echo "Skipping Mac/Darwin scripts..."; exit 0; fi
-echo "Running ${OS_TYPE} Bootstrap..."
+if [[ "$OS_TYPE" != "Darwin" ]]; then echo "Skipping ${0} ..."; exit 0; fi
+echo "Running ${OS_TYPE} Bootstrap... ${0}"
 
 
 # Beginning Installation
