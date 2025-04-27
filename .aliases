@@ -40,7 +40,7 @@ alias ya='yadm add'
 alias yc='yadm commit -m'
 alias yp='yadm push'
 alias yl='yadm log --oneline --graph --decorate'
-alias yd='yadm diff'
+alias yd='yadm difftool'
 alias ys='yadm status'
 alias yu='yadm pull --rebase'
 
