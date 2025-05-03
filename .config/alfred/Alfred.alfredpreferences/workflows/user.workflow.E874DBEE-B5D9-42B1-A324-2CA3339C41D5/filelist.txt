@@ -1,0 +1,13 @@
+README.md
+bin
+bin/fd
+bin/fzf
+bin/sed
+filelist.txt
+icon.png
+info.plist
+matches.txt
+scripts
+scripts/firstrun.sh
+scripts/listfiles.sh
+scripts/searchfiles.sh

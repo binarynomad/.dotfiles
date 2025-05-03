@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>customSites</key>
+	<dict>
+		<key>352E5269-D583-421A-BB4D-A4C74263B10D</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>img</string>
+			<key>text</key>
+			<string>Giphy: {query}</string>
+			<key>url</key>
+			<string>https://giphy.com/search/{query}</string>
+		</dict>
+		<key>6AB77B1A-57A2-47C2-95EE-CEC5B76EF2AC</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>p</string>
+			<key>text</key>
+			<string>perplexity.ai</string>
+			<key>url</key>
+			<string>https://www.perplexity.ai/search?q={query}</string>
+		</dict>
+		<key>7F9D6CE6-0C49-4F33-BB32-B85CFF93EB01</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>true</string>
+			<key>text</key>
+			<string>TruePeople Search</string>
+			<key>url</key>
+			<string>https://www.truepeoplesearch.com/resultphone?phoneno={query}</string>
+		</dict>
+		<key>B41048C6-6923-424F-8EA0-713F393CBF2F</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>gcp</string>
+			<key>text</key>
+			<string>Google Console for GCP</string>
+			<key>url</key>
+			<string>https://console.cloud.google.com/iam-admin/iam</string>
+		</dict>
+		<key>EB03F154-D0F8-4EF0-B54F-1C53C330EAC8</key>
+		<dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyword</key>
+			<string>am</string>
+			<key>text</key>
+			<string>Amazon: {query}</string>
+			<key>url</key>
+			<string>https://www.amazon.com/s?k={query}</string>
+			<key>utf8</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

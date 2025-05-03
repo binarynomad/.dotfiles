@@ -1,0 +1,7 @@
+bin/fd
+bin/fzf
+filelist.txt
+scripts/firstrun.sh
+info.plist
+scripts/listfiles.sh
+scripts/searchfiles.sh

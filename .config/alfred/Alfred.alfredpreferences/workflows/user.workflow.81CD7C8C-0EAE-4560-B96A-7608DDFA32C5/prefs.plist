@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>backup_destination</key>
+	<string>~/Library/CloudStorage/Dropbox/ARCHIVE/Other/Obsidian-Backup</string>
+	<key>max_number_of_bkps</key>
+	<integer>10</integer>
+	<key>open_after_appending</key>
+	<false/>
+	<key>scratchpad_append_prefix</key>
+	<string>- [ ] </string>
+	<key>scratchpad_note_path</key>
+	<string>Journal/Daily/{date:YYYY-MM-dd}#Actions for the Day</string>
+	<key>vault_path</key>
+	<string>~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian Vault</string>
+</dict>
+</plist>

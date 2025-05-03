@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<workflow>
+  <name>Create New File in Finder (with file type templates)</name>
+  <version>3.0</version>
+  <bundle>ianisted.newfile</bundle>
+  <updated>1393320745</updated>
+  <file>create_new_file_in_finder.alfredworkflow</file>
+</workflow>
