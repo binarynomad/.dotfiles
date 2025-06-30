@@ -673,6 +673,10 @@ endfunction
 noremap <leader>hh :call ShowCheatSheet(my_vim_cheatsheet)<CR>
 
 let my_vim_cheatsheet=[
+      \"---- Built-In Help ----",
+      \":help reference_toc",
+      \":help usr_toc",
+      \"",
       \"---- CHEATSHEET BASICS ----",
       \"",
       \"'a..z   - N: jump to mark in buffer",
@@ -724,7 +728,7 @@ let my_vim_cheatsheet=[
       \"gx      - N: open URL in browser",
       \"m[A..Z] - N: mark point in buffers across files",
       \"m[a..z] - N: mark point in buffer",
-      \"o       - V: switch between selection beginning & end",
+      \"o       - V: jump between visual selection beginning & end",
       \"s       - N: easymotion jump to char on screen",
       \"u       - N: undo last edit",
       \"v       - N: visual mode",
@@ -829,7 +833,7 @@ let my_vim_cheatsheet=[
       \":let @a='C-r C-r a          - edit and replace macro",
       \":packadd helptoc            - add a Table of Contents for markdown",
       \":RenumberSelection          - renumber lists for selected text",
-      \":mks filename               - make session wiht filename (load with source",
+      \":mks filename               - make session with filename (load with source)",
       \":reg                        - list contents of registers",
       \"<C>[hjkl]                   - window direction navigation",
       \"F12                         - toggle code paste mode",
@@ -837,7 +841,8 @@ let my_vim_cheatsheet=[
       \"[VB]A<ESC>                  - multiline insert at end of line (APPEND)",
       \"[VB]I<ESC>                  - multiline insert at cursor",
       \"[search]cgn[new].           - selective replace search term with new item",
-      \"vim scp://name@host/path    - edit remote file(s)",
+      \"vim scp://name@host//path   - edit remote ssh file(s)",
+      \"viwc()<Esc>P                - native: surround words with brackets, parens or quotes",
       \"",
       \"---- SPECIAL SEARCHES ----",
       \"",
@@ -853,11 +858,12 @@ let my_vim_cheatsheet=[
       \"",
       \"---- USEFUL URLS ----",
       \"",
-      \"https://learnvim.irian.to/                                          - Learn vim",
-      \"https://www.youtube.com/watch?v=wlR5gYd6um0                         - Mastering The Vim Language",
-      \"https://www.youtube.com/watch?v=aHm36-na4-4                         - More Instantly Better Vim",
-      \"https://realpython.com/vim-and-python-a-match-made-in-heaven/       - RealPython: Vim and Python",
-      \"https://devhints.io/vim-easyalign                                   - EasyAlign examples",
+      \"https://vimhelp.org/                                           - Vim Manual Online",
+      \"https://learnvim.irian.to/                                     - Learn vim",
+      \"https://www.youtube.com/watch?v=wlR5gYd6um0                    - Mastering The Vim Language",
+      \"https://www.youtube.com/watch?v=aHm36-na4-4                    - More Instantly Better Vim",
+      \"https://realpython.com/vim-and-python-a-match-made-in-heaven/  - RealPython: Vim and Python",
+      \"https://devhints.io/vim-easyalign                              - EasyAlign examples",
 \]"
 
 "---- TESTING AREA: Trying out new options/functions ---- {{{1
