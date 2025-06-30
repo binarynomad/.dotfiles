@@ -129,7 +129,10 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 fpath+=/opt/homebrew/share/zsh/site-functions
 
 # 1PW: CLI Autocompletion
-eval "$(op completion zsh)"; compdef _op op
+# The eval kept generating an error so I exported the op completion command
+# to the _op file in my local directory and then added it to my path.
+#eval "$(op completion zsh)"; compdef _op op
+fpath+=$HOME/.local/share/zsh/site-functions
 
 # BH: ZSH Completions
 # The following lines were added by compinstall
