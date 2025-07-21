@@ -19,6 +19,7 @@ brew "cmake"
 brew "ctags"
 brew "dockutil"
 brew "doctl"
+brew "duf"
 brew "fd"
 brew "harfbuzz"
 brew "ffmpeg"
@@ -42,6 +43,7 @@ brew "lazydocker"
 brew "lazygit"
 brew "llm"
 brew "mad"
+brew "magic-wormhole"
 brew "node"
 brew "marked"
 brew "mas"
@@ -106,9 +108,9 @@ cask "font-code-new-roman-nerd-font"
 cask "font-hack-nerd-font"
 cask "font-sauce-code-pro-nerd-font"
 cask "font-ubuntu-nerd-font"
+cask "gcloud-cli"
 cask "gemini"
 cask "google-chrome"
-cask "google-cloud-sdk"
 cask "google-drive"
 cask "handbrake-app"
 cask "hazel"
@@ -161,7 +163,6 @@ mas "DaisyDisk", id: 411643860
 mas "Discovery", id: 1381004916
 mas "Exporter", id: 1099120373
 mas "Fantastical", id: 975937182
-mas "FiveNotes", id: 1231597027
 mas "GarageBand", id: 682658836
 mas "Gemini", id: 463541543
 mas "Goodnotes", id: 1444383602
