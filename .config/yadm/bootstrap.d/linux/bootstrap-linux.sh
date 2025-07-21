@@ -49,7 +49,7 @@ sudo locale-gen en_US.UTF-8
 echo ""
 echo "Installing common CLI tools..."
 
-packages="bat fd-find jq ncdu ripgrep tldr tree"
+packages="bat fd-find jq ncdu ripgrep tldr tree ts"
 
 for package in $packages; do
     echo -e "\nInstalling ${package}"

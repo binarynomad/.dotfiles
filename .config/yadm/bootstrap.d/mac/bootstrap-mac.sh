@@ -43,11 +43,13 @@ done
 # brew bundle --global
 # fi
 
+
+
 # ---------------------------------------------
 # Manual Install Apps
 # ---------------------------------------------
 # Use SetApp to install (Cleanshot, BoltAI, ...)
-
+echo "Don't forget to check apps from SetApp..."
 
 # ---------------------------------------------
 # APPS CONFIG:

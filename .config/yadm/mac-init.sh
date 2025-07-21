@@ -2,6 +2,10 @@
 # It is assumed some machines will not have (brew) or (git) preinstalled, so
 # this file is intended to be pulled directly with a curl or browser and run.
 
+# Constants
+BREW_INSTALLER="https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
+USER_REPO="https://github.com/binarynomad/.dotfiles.git"
+
 # Start the Brew Installer which will also install Xcode/git
 echo -e "\nInstalling XCODE, GIT, BREW...\n"
 
@@ -9,7 +13,7 @@ if [[ -e /opt/homebrew/bin/brew ]]; then
   echo -e "\nXcode, Git, & Brew are already installed; continuing..."
 else
   echo -e "\nInstalling Xcode, Git, & Brew..."
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  /bin/bash -c "$(curl -fsSL ${BREW_INSTALLER})"
 fi
 
 # Temporarily envoke the brew environment, this will be replaced
@@ -23,4 +27,4 @@ brew install yadm
 
 # Use YADM to pull the rest of the ENV and Bootstrap files
 echo -e "\nActivating YADM, calling bootstrap scripts..."
-yadm clone https://github.com/binarynomad/.dotfiles.git
+yadm clone ${USER_REPO}
