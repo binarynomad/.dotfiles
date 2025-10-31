@@ -4,32 +4,33 @@ tap "homebrew/bundle"
 tap "homebrew/services"
 tap "rhettbull/osxphotos"
 tap "saulpw/vd"
+tap "sst/tap"
 brew "aircrack-ng"
-brew "xz"
 brew "ansible"
-brew "protobuf"
 brew "asitop"
 brew "awscli"
 brew "bat"
 brew "bottom"
 brew "btop"
-brew "gnutls"
 brew "cask"
+brew "cirruslabs/cli/tart"
 brew "cmake"
 brew "ctags"
 brew "dockutil"
 brew "doctl"
 brew "duf"
 brew "fd"
-brew "harfbuzz"
 brew "ffmpeg"
 brew "fzf"
 brew "gh"
 brew "git"
 brew "glances"
+brew "gnutls"
 brew "gping"
 brew "graphviz"
 brew "handbrake", link: false
+brew "harfbuzz"
+brew "hashicorp/tap/terraform"
 brew "httpie"
 brew "imagemagick"
 brew "imap-backup"
@@ -44,7 +45,6 @@ brew "lazygit"
 brew "llm"
 brew "mad"
 brew "magic-wormhole"
-brew "node"
 brew "marked"
 brew "mas"
 brew "mpc"
@@ -52,15 +52,18 @@ brew "mtr"
 brew "ncdu"
 brew "ngrep"
 brew "nmap"
+brew "node"
 brew "pkgconf"
 brew "podman"
 brew "prettier"
+brew "protobuf"
 brew "pyenv"
 brew "pyenv-virtualenv"
 brew "pygments"
 brew "pytorch"
 brew "qrcp"
 brew "rename"
+brew "rhettbull/osxphotos/osxphotos"
 brew "ripgrep"
 brew "rsync"
 brew "ruff"
@@ -68,6 +71,7 @@ brew "rust"
 brew "snowflake"
 brew "speedtest-cli"
 brew "sqlfluff"
+brew "sst/tap/opencode"
 brew "tailscale"
 brew "tailspin"
 brew "terraformer"
@@ -79,15 +83,13 @@ brew "uv"
 brew "visidata"
 brew "watch"
 brew "wget"
+brew "xz"
 brew "yadm"
 brew "yarn"
 brew "yq"
 brew "yt-dlp"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
-brew "cirruslabs/cli/tart"
-brew "hashicorp/tap/terraform"
-brew "rhettbull/osxphotos/osxphotos"
 cask "1password"
 cask "1password-cli"
 cask "a-better-finder-rename"
@@ -116,13 +118,13 @@ cask "handbrake-app"
 cask "hazel"
 cask "iterm2"
 cask "karabiner-elements"
-cask "leader-key"
 cask "linear-linear"
 cask "mactracker"
 cask "macvim-app"
 cask "msty"
 cask "name-mangler"
 cask "netspot"
+cask "notion"
 cask "obsidian"
 cask "ollama-app"
 cask "podman-desktop"
@@ -156,6 +158,7 @@ cask "wifiman"
 cask "windows-app"
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
+mas "Actions For Obsidian", id: 1659667937
 mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
 mas "ColorSlurp", id: 1287239339
@@ -166,19 +169,19 @@ mas "Fantastical", id: 975937182
 mas "GarageBand", id: 682658836
 mas "Gemini", id: 463541543
 mas "Goodnotes", id: 1444383602
-mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
-mas "MindNode", id: 1289197285
+mas "MindNode Classic", id: 1289197285
 mas "Moom Classic", id: 419330170
 mas "Notability", id: 360593530
 mas "Numbers", id: 409203825
 mas "Okta Verify", id: 490179405
-mas "openterface", id: 6478481082
 mas "Pages", id: 409201541
 mas "Remote Desktop", id: 409907375
 mas "Serial", id: 877615577
 mas "Soulver 3", id: 1508732804
+mas "Table Tool", id: 1122008420
 mas "Tailscale", id: 1475387142
 mas "WiFi Explorer", id: 494803304
 mas "WiFi Signal", id: 525912054
 mas "WireGuard", id: 1451685025
+mas "iMovie", id: 408981434
