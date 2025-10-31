@@ -680,6 +680,7 @@ let my_vim_cheatsheet=[
       \"---- CHEATSHEET BASICS ----",
       \"",
       \"'a..z   - N: jump to mark in buffer",
+      \"()      - N: jump to BEGINNING/END of sentences",
       \"50%     - N: jump to % of file",
       \"<C>]    - N: jump to tag source",
       \"<C>a    - N: increment number at cursor",
