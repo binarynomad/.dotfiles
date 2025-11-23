@@ -75,7 +75,7 @@ fi
 
 # NET: Tools aliased with sudo
 alias mtr='sudo mtr'
-alias nodes='sudo ~/bin/nodes.py'
+alias nodes='sudo ~/bin/network-scan.py'
 alias getnodes='nodes -t 172.22.100.0/24'
 alias scan='sudo nmap -sS -O'
 
