@@ -4,6 +4,18 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Tab: hold for Control, tap for Tab",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "tab" },
+                                "to": [{ "key_code": "left_control" }],
+                                "to_if_alone": [{ "key_code": "tab" }],
+                                "to_if_held_down": [{ "key_code": "left_control" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Hyper + i/j/k/l == vim directional Keys",
                         "manipulators": [
                             {
