@@ -29,6 +29,9 @@ alias ap="ansible-playbook"
 alias o='open'
 alias sl='subl'
 
+# Link to original vim installs (when replaced by NeoVim)
+alias avim='/usr/bin/vim' # Apple/Mac System vim
+alias bvim='/usr/bin/vim' # Brew vim
 
 # ============================
 # Env Tool Specific Aliases
