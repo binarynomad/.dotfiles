@@ -143,3 +143,32 @@ compinit
 
 # FZF: Main import/setup of fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# BH: Open buffer line in editor
+autoload -Uz edit-command-Line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
+# BH - ZMV is wildcard name changes
+# EXAMPLE: zmv (*). log' '$1.txt'
+autoload zmv
+
+# BH: Magic Space for history completion
+bindkey " " magic-space
+
+# BH: file extension aliases to default open
+alias -s csv='bat'
+alias -s go='$EDITOR'
+alias -s js='$EDITOR'
+alias -s json='jless'
+alias -s md='bat'
+alias -s mov='open'
+alias -s mp4='open'
+alias -s py='$EDITOR'
+alias -s ts='$EDITOR'
+alias -s txt='bat'
+alias -s yaml='bat -l yaml'
+alias -s yml='bat'
+
+# BH - Global aliases
+alias -g NE='2>/dev/null'
