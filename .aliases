@@ -20,6 +20,7 @@ alias ...="cd ../.."
 alias -- -="cd -"
 
 # Directory Shortcuts
+alias ai="cd ~/dev/ai-playground/"
 alias dl="cd ~/Downloads"
 alias de="cd ~/Desktop"
 alias dev="cd ~/dev"
