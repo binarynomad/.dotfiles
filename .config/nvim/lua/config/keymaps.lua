@@ -20,3 +20,12 @@ vim.keymap.set("n", "Q", "q", { noremap = true, desc = "Start/Stop Macro Recordi
 -- Setup a next buffer sub-command
 -- vim.keymap.set("n", "<LEADER>bn", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 vim.keymap.set("n", "<LEADER>bn", ":enew<CR>", { noremap = true, desc = "New Buffer" })
+
+-- Vim Cheatsheet Viewer from GitHub
+vim.keymap.set("n", "<leader>hv", function()
+  require("config.vimrc-viewer").show_cheatsheet()
+end, { noremap = true, silent = true, desc = "Show Vim Cheatsheet" })
+
+vim.keymap.set("n", "<leader>hr", function()
+  require("config.vimrc-viewer").refresh_cheatsheet()
+end, { noremap = true, silent = true, desc = "Refresh Vim Cheatsheet" })
