@@ -4,6 +4,45 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Map f+d to CMD+F11 (for mouseless)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "keyboard_types": ["ansi"],
+                                        "type": "keyboard_type_if"
+                                    }
+                                ],
+                                "from": {
+                                    "simultaneous": [
+                                        { "key_code": "f" },
+                                        { "key_code": "d" }
+                                    ],
+                                    "simultaneous_options": {
+                                        "detect_key_down_uninterruptedly": true,
+                                        "key_down_order": "insensitive",
+                                        "key_up_order": "insensitive",
+                                        "to_after_key_up": [
+                                            {
+                                                "set_variable": {
+                                                    "name": "simultaneous_timer_triggered",
+                                                    "value": false
+                                                }
+                                            }
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f11",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Tab: hold for Control, tap for Tab",
                         "manipulators": [
                             {
