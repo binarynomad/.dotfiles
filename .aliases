@@ -21,6 +21,7 @@ alias -- -="cd -"
 
 # Directory Shortcuts
 alias ai="cd ~/dev/ai-playground/"
+alias aid='cd "$HOME/Desktop/Tech - AI & Research/AI-Workbench/"'
 alias dl="cd ~/Downloads"
 alias de="cd ~/Desktop"
 alias dev="cd ~/dev"
@@ -108,9 +109,6 @@ alias p="cd ~/Dropbox/Projects"
 alias clients='cd ~/Dropbox/Clients'
 alias oitd='cd ~/brian@oitd.net\ -\ Google\ Drive/My\ Drive/Clients/'
 alias oitd_old='cd ~/Dropbox/Business/Open-IT-Design'
-
-# WINDSURF: Main cli
-alias ws="${HOME}/.codeium/windsurf/bin/windsurf"
 
 # OSX: Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; brew bundle dump ; sleep 5 ; mas upgrade ; mv Brewfile ~/.config/yadm/'
