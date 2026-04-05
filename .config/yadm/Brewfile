@@ -22,6 +22,7 @@ brew "doctl"
 brew "duf"
 brew "fd"
 brew "ffmpeg"
+brew "fio"
 brew "fzf"
 brew "node"
 brew "gemini-cli"
@@ -47,6 +48,7 @@ brew "kanata"
 brew "lazydocker"
 brew "lazygit"
 brew "llm"
+brew "llmfit"
 brew "mad"
 brew "magic-wormhole"
 brew "marked"
@@ -57,9 +59,9 @@ brew "ncdu"
 brew "neovim"
 brew "ngrep"
 brew "nmap"
+brew "protobuf"
 brew "pkgconf"
 brew "prettier"
-brew "protobuf"
 brew "pyenv"
 brew "pyenv-virtualenv"
 brew "pygments"
@@ -83,8 +85,11 @@ brew "tmux"
 brew "tree-sitter-cli"
 brew "uv"
 brew "visidata"
+brew "wakeonlan"
 brew "watch"
 brew "wget"
+brew "whosthere"
+brew "witr"
 brew "yadm"
 brew "yarn"
 brew "yq"
@@ -104,7 +109,6 @@ cask "apparency"
 cask "audacity"
 cask "balenaetcher"
 cask "bambu-studio"
-cask "bartender"
 cask "block-goose"
 cask "bruno"
 cask "claude-code"
@@ -137,7 +141,7 @@ cask "name-mangler"
 cask "netspot"
 cask "notion"
 cask "obsidian"
-cask "qlvideo"
+cask "quicklook-video"
 cask "rar"
 cask "raspberry-pi-imager"
 cask "screenflow"
@@ -146,11 +150,12 @@ cask "shapr3d"
 cask "shortcat"
 cask "signal"
 cask "slack"
+cask "smoothcsv"
 cask "snowflake-snowsql"
 cask "soulver"
 cask "sublime-text"
 cask "suspicious-package"
-cask "textexpander"
+cask "thaw"
 cask "the-unarchiver"
 cask "tuta-mail"
 cask "upscayl"
@@ -160,22 +165,23 @@ cask "windows-app"
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
 mas "Actions For Obsidian", id: 1659667937
+mas "AmorphousDiskMark", id: 1168254295
 mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
+mas "Blackmagic Disk Speed Test", id: 425264550
 mas "ColorSlurp", id: 1287239339
 mas "Discovery", id: 1381004916
 mas "Exporter", id: 1099120373
 mas "Fantastical", id: 975937182
 mas "GarageBand", id: 682658836
 mas "Gemini", id: 463541543
-mas "Goodnotes", id: 1444383602
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "MindNode Classic", id: 1289197285
 mas "Moom Classic", id: 419330170
-mas "Notability", id: 360593530
 mas "Numbers", id: 409203825
 mas "Okta Verify", id: 490179405
+mas "Pages", id: 361309726
 mas "Pages", id: 409201541
 mas "Remote Desktop", id: 409907375
 mas "Serial", id: 877615577
@@ -185,3 +191,4 @@ mas "Tailscale", id: 1475387142
 mas "WiFi Explorer", id: 494803304
 mas "WiFi Signal", id: 525912054
 mas "WireGuard", id: 1451685025
+uv "sqlit-tui"
