@@ -403,7 +403,7 @@ Plug 'liuchengxu/vim-which-key'         " show some of your mappings live
 Plug 'mbbill/undotree'                  " full undo tracking and diffs
 Plug 'mhinz/vim-startify'               " vim startup splashscreen
 Plug 'scrooloose/nerdtree'              " file_tree: remap <Leader>f<CR>
-Plug 'TaDaa/vimade'                     " window focus fading / highlighting
+"Plug 'TaDaa/vimade'                     " window focus fading / highlighting
 
 "---TextObj Plugins---
 Plug 'glts/vim-textobj-comment'         " vic: select all in commented block
