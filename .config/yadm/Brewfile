@@ -129,6 +129,8 @@ brew "protobuf"
 brew "ripgrep"
 # AI coding agent, built for the terminal
 brew "opencode"
+# AI agent toolkit
+brew "pi-coding-agent"
 # Package compiler and linker metadata toolkit
 brew "pkgconf"
 # Code formatter for JavaScript, CSS, JSON, GraphQL, Markdown, YAML
@@ -233,6 +235,8 @@ cask "bruno"
 cask "claude-code"
 # Tool to remove unnecessary files and folders from disk
 cask "cleanmymac"
+# Ghostty-based terminal with vertical tabs and notifications for AI coding agents
+cask "cmux"
 # Disk space visualiser
 cask "daisydisk"
 # Run Stable Diffusion locally
@@ -333,6 +337,8 @@ cask "vlc"
 cask "wifiman"
 # Connect to Windows
 cask "windows-app"
+# Photo viewer, image manager, image resiser and more
+cask "xnviewmp"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "1Password for Safari", id: 1569813296
@@ -365,4 +371,5 @@ mas "WiFi Explorer", id: 494803304
 mas "WiFi Signal", id: 525912054
 mas "WireGuard", id: 1451685025
 uv "sqlit-tui"
+npm "@mermaid-js/mermaid-cli"
 npm "csvtojson"
