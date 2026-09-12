@@ -35,7 +35,7 @@ The script should do this: \(ai.prompt)</string>
 	<key>AitermURL</key>
 	<string>https://api.anthropic.com/v1/messages</string>
 	<key>AllowClipboardAccess</key>
-	<false/>
+	<true/>
 	<key>AlternateMouseScroll</key>
 	<false/>
 	<key>AnimateDimming</key>
@@ -2216,7 +2216,7 @@ The script should do this: \(ai.prompt)</string>
 	<key>Default Bookmark Guid</key>
 	<string>E2D7BBE9-D56A-40F4-910D-4A21D2AFE1E5</string>
 	<key>Default Browser Profile Guid</key>
-	<string>E2D7BBE9-D56A-40F4-910D-4A21D2AFE1E5</string>
+	<string>30945AF3-56B0-4354-A919-D90427190DAE</string>
 	<key>DimBackgroundWindows</key>
 	<false/>
 	<key>DimInactiveSplitPanes</key>
@@ -8563,6 +8563,8 @@ The script should do this: \(ai.prompt)</string>
 	<integer>0</integer>
 	<key>WordCharacters</key>
 	<string>/-+\~_.</string>
+	<key>com.apple.WebPrivacy.ResourceMonitorURLsVersion</key>
+	<string>qrsAAAGeI2k9AODoQYs=</string>
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
 	<key>findMode_iTerm</key>
