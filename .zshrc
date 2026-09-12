@@ -171,3 +171,6 @@ alias -s yml='bat'
 
 # BH - Global aliases
 alias -g NE='2>/dev/null'
+
+# tart-vm shell function (eval "$(tart-vm --shell-init)")
+eval "$(tart-vm --shell-init)"
