@@ -83,6 +83,9 @@ ZSH_THEME="agnoster"
 # Add wisely, as too many plugins slow down shell startup.
 #
 
+# BH - this has to appen before the plugin zoxide
+export ZOXIDE_CMD_OVERRIDE=cd
+
 # OMZ: Plugins
 # Leaving out (git gh fzf) for now; test later -- BH
 plugins=(
@@ -91,7 +94,7 @@ plugins=(
   dotenv
   rsync
   vi-mode
-  z
+  zoxide
 )
 
 # OMZ: Setup the enviroment, set after PLUGINS
