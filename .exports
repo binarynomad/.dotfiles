@@ -55,8 +55,6 @@ export FZF_DEFAULT_OPTS="
   --preview-window='right' # Position preview to the right and hide initially
 
   --bind='f2:toggle-preview'
-
-  
 "
 
 # FZF: To apply the command to CTRL-T as well
