@@ -205,6 +205,8 @@ brew "yarn"
 brew "yq"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
@@ -317,8 +319,6 @@ cask "shapr3d"
 cask "shortcat"
 # Instant messaging application focusing on security
 cask "signal"
-# Team communication and collaboration software
-cask "slack"
 # CSV editor
 cask "smoothcsv"
 # Command-line client for connecting to Snowflake
@@ -358,6 +358,7 @@ mas "Amphetamine", id: 937984704
 mas "Apple Configurator", id: 1037126344
 mas "Blackmagic Disk Speed Test", id: 425264550
 mas "ColorSlurp", id: 1287239339
+mas "Disco Elysium", id: 1508191454
 mas "Discovery", id: 1381004916
 mas "Exporter", id: 1099120373
 mas "Fantastical", id: 975937182
@@ -367,12 +368,12 @@ mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "MindNode Classic", id: 1289197285
 mas "Moom Classic", id: 419330170
-mas "Numbers", id: 409203825
 mas "Numbers", id: 361304891
+mas "Numbers", id: 409203825
 mas "Obsidian Web Clipper", id: 6720708363
 mas "Okta Verify", id: 490179405
-mas "Pages", id: 409201541
 mas "Pages", id: 361309726
+mas "Pages", id: 409201541
 mas "Remote Desktop", id: 409907375
 mas "Serial", id: 877615577
 mas "Soulver", id: 1508732804
