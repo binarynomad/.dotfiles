@@ -403,6 +403,7 @@ Plug 'liuchengxu/vim-which-key'         " show some of your mappings live
 Plug 'mbbill/undotree'                  " full undo tracking and diffs
 Plug 'mhinz/vim-startify'               " vim startup splashscreen
 Plug 'scrooloose/nerdtree'              " file_tree: remap <Leader>f<CR>
+Plug 'christoomey/vim-tmux-navigator'   " allow pane navigation between VIM and TMUX
 "Plug 'TaDaa/vimade'                     " window focus fading / highlighting
 
 "---TextObj Plugins---
